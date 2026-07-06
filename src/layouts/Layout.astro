@@ -1,0 +1,168 @@
+---
+/**
+ * Layout.astro - Main wrapper layout component.
+ * Provides the central template, navbar, footer, theme mechanics,
+ * and global scroll reveal animations for all pages.
+ */
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Define component properties for dynamic page headers and descriptions
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+// Destructure layout props, setting default fallbacks if none are provided
+const { 
+  title = "Indido Apparel", 
+  description = "Indido Apparel is a company website for apparel sourcing, product development, manufacturing coordination, and quality control." 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+</head>
+<body>
+    <main class="site-shell">
+        <!-- Header Nav bar -->
+        <Header />
+
+        <!-- Slot for child content -->
+        <slot />
+
+        <!-- Footer -->
+        <Footer />
+    </main>
+
+    <!-- Client-side script orchestrating global scroll animations and utilities -->
+    <script>
+      /**
+       * Scroll-triggered Fade Animations
+       * Observes cards, grids, and sections, adding the `.in-view` class
+       * when they cross the viewport threshold (triggering CSS transitions).
+       */
+      const setupScrollAnimations = () => {
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            } else {
+              entry.target.classList.remove('in-view');
+            }
+          });
+        }, { threshold: 0.05 }); // Triggers when at least 5% of the element is visible
+
+        document.querySelectorAll('.quality-card, .values-grid, .reveal-on-scroll, .atelier-section, .intro-section').forEach(el => {
+          scrollObserver.observe(el);
+        });
+      };
+
+      /**
+       * Text Splitting Parser
+       * Breaks headings and paragraphs flagged with `.split-text-scroll`
+       * into individual word wrapper spans. Each word is assigned an incrementing
+       * animation-delay, creating a sequential, flowing entrance wave.
+       */
+      const setupTextSplitting = () => {
+        document.querySelectorAll('.split-text-scroll').forEach(el => {
+          if (el.querySelector('.word-wrapper')) return; // Prevent parsing if already split
+          
+          const isParagraph = el.tagName === 'P';
+          const delayStep = isParagraph ? 25 : 55; // Slower stagger step for headings
+          let html = '';
+          let wordIndex = 0;
+          
+          // Parse all child nodes (TEXT_NODE elements vs elements like <em> tags)
+          Array.from(el.childNodes).forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              const textContent = node.textContent || '';
+              const words = textContent.split(/\s+/).filter(w => w.length > 0);
+              words.forEach(word => {
+                html += `<span class="word-wrapper"><span style="animation-delay: ${wordIndex * delayStep}ms">${word}</span></span> `;
+                wordIndex++;
+              });
+            } else if (node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).tagName === 'EM') {
+              // Retains and animates italicized shimmer emphasis text
+              const element = node as HTMLElement;
+              const textContent = element.textContent || '';
+              const words = textContent.split(/\s+/).filter(w => w.length > 0);
+              words.forEach(word => {
+                html += `<span class="word-wrapper"><span class="shimmer-text" style="animation-delay: ${wordIndex * delayStep}ms"><em>${word}</em></span></span> `;
+                wordIndex++;
+              });
+            } else {
+              // Copy any other custom inline elements directly
+              const outerHTML = (node as HTMLElement).outerHTML || '';
+              html += outerHTML + ' ';
+            }
+          });
+          
+          el.innerHTML = html.trim();
+        });
+      };
+
+      /**
+       * Center-Aligned Smooth Scrolling for Anchor Links
+       * Intercepts clicks on hash-links and scrolls the corresponding section to the
+       * vertical center of the viewport, ensuring headers do not block the section view.
+       */
+      const setupScrollOffsets = () => {
+        document.querySelectorAll('a[href*="#"]').forEach(link => {
+          link.addEventListener('click', (e) => {
+            const targetHash = (link as HTMLAnchorElement).hash;
+            if (!targetHash) return;
+            
+            const targetPath = (link as HTMLAnchorElement).pathname;
+            const currentPath = window.location.pathname;
+            
+            const isSamePage = targetPath === currentPath || 
+                               targetPath === '' || 
+                               targetPath === '/' ||
+                               (targetPath.replace(/\/$/, '') === currentPath.replace(/\/$/, ''));
+                               
+            if (isSamePage) {
+              const targetEl = document.querySelector(targetHash);
+              if (targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                history.pushState(null, '', targetHash);
+              }
+            }
+          });
+        });
+
+        // Handle direct landing page loads with hash
+        if (window.location.hash) {
+          const initialTarget = document.querySelector(window.location.hash);
+          if (initialTarget) {
+            setTimeout(() => {
+              initialTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+          }
+        }
+      };
+
+      // Execute configuration scripts on initial document render
+      setupTextSplitting();
+      setupScrollAnimations();
+      setupScrollOffsets();
+
+      // Listen for swap events during page transitions
+      document.addEventListener('astro:after-swap', () => {
+        document.body.style.overflow = '';
+        setupTextSplitting();
+        setupScrollAnimations();
+        setupScrollOffsets();
+      });
+    </script>
+</body>
+</html>

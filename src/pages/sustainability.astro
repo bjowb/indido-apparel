@@ -1,0 +1,561 @@
+---
+/**
+ * sustainability.astro - Eco-Conscious Sourcing & Certifications
+ * A highly polished, single-column editorial narrative that is clean,
+ * elegant, and 100% robust on all screen widths.
+ * Refactored to use modular CertificationStrip component.
+ */
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import CertificationStrip from '../components/CertificationStrip.astro';
+
+// Image Imports
+import fabricDetailRaw from '../assets/shop/sustainability_impact.png';
+import studioImageRaw from '../assets/shop/sustainability_materials.png';
+---
+
+<Layout title="Sustainability | Indido Apparel" description="Explore Indido Apparel's commitment to ethical sourcing, waste reduction, organic/recycled materials, and global compliance certifications.">
+    <!-- Floating Ambient Orbs (Pristine light particles matching home page) -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Editorial Header -->
+    <header class="story-hero-section reveal-on-scroll">
+        <div class="title-line-container">
+            <span class="title-line"></span>
+            <span class="eyebrow">OUR RESPONSIBILITY</span>
+            <span class="title-line"></span>
+        </div>
+        <h1 class="story-main-title split-text-scroll">Our Unwavering Commitment to <em>Sustainability</em>.</h1>
+        <p class="story-subtitle split-text-scroll">Responsible Sourcing &amp; Compliance</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="story-container">
+        <!-- Section 1: Introduction (Image-Left, Card-Right) -->
+        <section class="overlap-section reveal-on-scroll">
+            <div class="overlap-grid">
+                <!-- Left: Styled Image with Offset Border Frame -->
+                <div class="overlap-image-container">
+                    <div class="frame-backdrop"></div>
+                    <Image src={fabricDetailRaw} alt="Close-up of raw organic cotton fabrics" class="overlap-img" width={700} />
+                </div>
+                <!-- Right: Overlapping Text Card -->
+                <div class="overlap-card-wrapper">
+                    <div class="overlap-card">
+                        <header class="section-header">
+                            <span class="section-number">01 /</span>
+                            <h2 class="section-title">A Smarter <em>Impact</em></h2>
+                            <span class="header-divider"></span>
+                        </header>
+                        <div class="section-body">
+                            <p class="brand-statement">
+                                "We care deeply and passionately about the future of the fashion industry, the well-being of the global workforce, and the health of our planet."
+                            </p>
+                            <p>
+                                At Indido Apparel, sustainability is far more than just a corporate buzzword; it is a fundamental principle woven into the very fabric of how we operate every single day. We proudly and exclusively collaborate with responsible, trusted manufacturing partners who share our absolute dedication to ethical business practices, safe and uplifting working environments, and highly environmentally conscious production methods.
+                            </p>
+                            <p>
+                                We understand that the fashion supply chain can have a significant environmental footprint, and we view it as our responsibility to help mitigate that impact. By actively promoting the widespread use of sustainable, recycled, and organic materials, championing responsible sourcing networks, and heavily investing in efficient, waste-reducing production technologies, we empower our clients to build stunning collections they can be truly proud of.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: What We Stand For (Standalone Grid) -->
+        <section class="principles-section reveal-on-scroll">
+            <div class="principles-heading">
+                <span class="eyebrow">WHAT WE STAND FOR</span>
+                <h2>Core Environmental <em>Pillars</em></h2>
+            </div>
+            <div class="principles-grid">
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <h3>Ethical Manufacturing</h3>
+                    </div>
+                    <p>Ensuring compliance with fair wages, safe working environments, and uplifted worker standards throughout all factories.</p>
+                </article>
+
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        </div>
+                        <h3>Smarter Sourcing</h3>
+                    </div>
+                    <p>Carefully selecting eco-friendly raw materials, fibers, and trims from audited, certified mills and providers.</p>
+                </article>
+
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-recycle"><path d="M4.5 16.5c-1.5-1.25-2.5-3-2.5-5 0-3.87 3.13-7 7-7h1"/><path d="m8.5 7.5 2.5-3-2.5-3"/><path d="M11.5 4.5c1.5 1.25 2.5 3 2.5 5 0 3.87-3.13 7-7 7H6"/><path d="m7.5 13.5-2.5 3 2.5 3"/><path d="M19.5 16.5c1.5-1.25 2.5-3 2.5-5 0-3.87-3.13-7-7-7h-1"/><path d="M15 1.5v3h3"/></svg>
+                        </div>
+                        <h3>Lower Waste</h3>
+                    </div>
+                    <p>Optimizing production efficiency, fabric consumption, and reducing water usage, dyes, and excess runtime emissions.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 3: Sustainable Materials Showcase (Overlapping: Image-Left, Card-Right) -->
+        <section class="overlap-section reveal-on-scroll">
+            <div class="overlap-grid">
+                <!-- Left: Styled Image with Offset Border Frame -->
+                <div class="overlap-image-container materials-image-container">
+                    <div class="frame-backdrop"></div>
+                    <Image src={studioImageRaw} alt="Checking eco-friendly yarn options in the studio" class="overlap-img" width={700} />
+                </div>
+                <!-- Right: Overlapping Text Card -->
+                <div class="overlap-card-wrapper">
+                    <div class="overlap-card">
+                        <header class="section-header">
+                            <span class="section-number">02 /</span>
+                            <h2 class="section-title">Certified Raw <em>Materials</em></h2>
+                            <span class="header-divider"></span>
+                        </header>
+                        <div class="section-body">
+                            <p class="brand-statement">
+                                "We source a wide range of lower-impact materials that support commercial needs while minimizing ecological burden."
+                            </p>
+                            
+                            <div class="materials-categories">
+                                <div class="material-cat">
+                                    <h4>Natural Fibers</h4>
+                                    <ul>
+                                        <li>Organic Cotton &bull; Hemp &bull; Linen</li>
+                                        <li>Bamboo &bull; Jute &bull; Ramie</li>
+                                    </ul>
+                                </div>
+                                <div class="material-cat">
+                                    <h4>Man-Made Cellulosics</h4>
+                                    <ul>
+                                        <li>Lyocell (Tencel) &bull; Modal</li>
+                                        <li>Viscose from responsible pulp</li>
+                                    </ul>
+                                </div>
+                                <div class="material-cat">
+                                    <h4>Recycled Materials</h4>
+                                    <ul>
+                                        <li>Recycled Polyester &bull; Recycled Cotton</li>
+                                        <li>Recycled Denim Blends &bull; Recycled Nylon</li>
+                                    </ul>
+                                </div>
+                                <div class="material-cat">
+                                    <h4>Lower-Impact Components</h4>
+                                    <ul>
+                                        <li>Natural Corozo &amp; Recycled Buttons</li>
+                                        <li>Compostable Packaging &bull; Water-based Inks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Pullquote Highlight -->
+        <div class="pullquote-block reveal-on-scroll">
+            <div class="pullquote-line"></div>
+            <blockquote>
+                "Helping brands grow responsibly with long-term value, ethical practices, and lower-impact choices for the planet."
+            </blockquote>
+            <div class="pullquote-line"></div>
+        </div>
+
+        <!-- Section 4: Global Compliance Certifications -->
+        <CertificationStrip />
+    </main>
+</Layout>
+
+<style>
+    /* Premium Lookbook Page Specific Styles */
+    :root {
+        --paper: #fcfbf9;
+        --cotton: #faf9f6;
+        --ink: #0d1e15;
+        --thread: #2e704a;
+        --prestige: #cfa667;
+        --line: rgba(13, 30, 21, 0.08);
+        --muted: #5e6f65;
+        --body-font: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    /* Ambient Glow Effects */
+    .ambient-orb {
+        position: absolute;
+        width: clamp(20rem, 40vw, 40rem);
+        height: clamp(20rem, 40vw, 40rem);
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(46, 112, 74, 0.035) 0%, rgba(252, 251, 249, 0) 70%);
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+    }
+    .orb-1 { top: 10%; left: -10%; }
+    .orb-2 { top: 40%; right: -15%; }
+    .orb-3 { bottom: 15%; left: 5%; }
+
+    /* Editorial Header */
+    .story-hero-section {
+        text-align: center;
+        margin: clamp(5rem, 8vw, 8rem) auto clamp(3rem, 5vw, 5rem);
+        padding: 0 1.5rem;
+        max-width: 68rem;
+        position: relative;
+        z-index: 1;
+    }
+    .title-line-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1.25rem;
+    }
+    .title-line {
+        flex-grow: 1;
+        height: 1px;
+        background-color: var(--ink);
+        opacity: 0.15;
+    }
+    .eyebrow {
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--thread);
+    }
+    .story-main-title {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+        font-weight: 400;
+        line-height: 1.15;
+        color: var(--ink);
+        max-width: 58rem;
+        margin: 0 auto;
+        letter-spacing: -0.02em;
+    }
+    .story-main-title em {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--thread);
+    }
+    .story-subtitle {
+        font-family: var(--body-font), sans-serif;
+        font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-top: 1.5rem;
+        font-weight: 500;
+    }
+
+    /* Narrative Container */
+    .story-container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 4vw, 4rem) 8rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Section 1: Overlap Grid Layout */
+    .overlap-section {
+        margin-bottom: clamp(6rem, 12vw, 10rem);
+    }
+    .overlap-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        gap: 2rem;
+    }
+    .overlap-image-container {
+        grid-column: 1 / 8;
+        grid-row: 1;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4/3;
+    }
+    .materials-image-container {
+        aspect-ratio: 16/9 !important;
+    }
+    .frame-backdrop {
+        position: absolute;
+        top: -1.5rem;
+        left: -1.5rem;
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--ink);
+        opacity: 0.07;
+        border-radius: 8px;
+        z-index: 0;
+    }
+    .overlap-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 30px 60px rgba(23, 32, 28, 0.08);
+        position: relative;
+        z-index: 1;
+    }
+    .overlap-card-wrapper {
+        grid-column: 6 / 13;
+        grid-row: 1;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .overlap-card {
+        background: var(--cotton);
+        border: 1px solid var(--line);
+        padding: clamp(2rem, 4vw, 3.8rem) clamp(2rem, 4vw, 3.5rem);
+        border-radius: 12px;
+        box-shadow: 0 25px 60px rgba(23, 32, 28, 0.04);
+        pointer-events: auto;
+    }
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .section-number {
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--thread);
+        letter-spacing: 0.05em;
+    }
+    .section-title {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+    }
+    .section-title em {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        color: var(--thread);
+    }
+    .header-divider {
+        flex-grow: 1;
+        height: 1px;
+        background-color: var(--line);
+    }
+    .brand-statement {
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        line-height: 1.6;
+        color: var(--ink);
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        border-left: 3px solid var(--thread);
+        padding-left: 1.25rem;
+    }
+    .section-body p {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        line-height: 1.7;
+        color: var(--muted);
+        margin-bottom: 1.2rem;
+    }
+    .section-body p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Section 2: Principles Grid Layout */
+    .principles-section {
+        border-top: 1px solid var(--line);
+        padding-top: clamp(4rem, 8vw, 8rem);
+        margin-bottom: clamp(6rem, 12vw, 10rem);
+    }
+    .principles-heading {
+        text-align: center;
+        margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .principles-heading h2 {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(1.8rem, 3.8vw, 3rem);
+        font-weight: 400;
+        color: var(--ink);
+        margin-top: 0.5rem;
+    }
+    .principles-heading h2 em {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        color: var(--thread);
+    }
+    .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.2rem;
+    }
+    .principle-card {
+        background-color: var(--cotton);
+        border: 1px solid var(--line);
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+        box-shadow: 0 10px 25px rgba(23, 32, 28, 0.02);
+    }
+    .principle-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(46, 112, 74, 0.06);
+        border-color: var(--thread);
+    }
+    .card-header-row {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+    }
+    .icon-wrapper {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: rgba(46, 112, 74, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--thread);
+    }
+    .principle-card h3 {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+    }
+    .principle-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0;
+    }
+
+    /* Materials Showcase Categories list inside overlap-card */
+    .materials-categories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 1rem;
+        pointer-events: auto;
+    }
+    .material-cat h4 {
+        margin: 0 0 0.5rem 0;
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--ink);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .material-cat ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    .material-cat li {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.45;
+    }
+
+    /* Pullquote block */
+    .pullquote-block {
+        text-align: center;
+        max-width: 44rem;
+        margin: clamp(4rem, 8vw, 7rem) auto;
+    }
+    .pullquote-line {
+        height: 1px;
+        background-color: var(--line);
+    }
+    .pullquote-block blockquote {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+        font-style: italic;
+        line-height: 1.45;
+        color: var(--thread);
+        padding: 2.2rem 1rem;
+        margin: 0;
+    }
+
+    /* Reverse overlapping alignment styling */
+    .overlap-section.reverse .overlap-grid {
+        grid-template-columns: 1.18fr 0.82fr;
+    }
+    .overlap-section.reverse .overlap-image-container {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .overlap-section.reverse .overlap-card-wrapper {
+        grid-column: 1;
+        grid-row: 1;
+        margin-left: 0;
+        margin-right: -8rem;
+    }
+    .overlap-section.reverse .frame-backdrop {
+        left: auto;
+        right: -16px;
+    }
+    .overlap-section.reverse .overlap-image-container:hover .overlap-img {
+        transform: translate(-4px, 4px);
+    }
+    .overlap-section.reverse .overlap-image-container:hover .frame-backdrop {
+        transform: translate(4px, -4px);
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 1024px) {
+        .overlap-image-container {
+            grid-column: 1 / 8;
+        }
+        .overlap-card-wrapper {
+            grid-column: 5 / 13;
+        }
+        .principles-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .overlap-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .overlap-image-container {
+            aspect-ratio: 4/3;
+            width: 100%;
+        }
+        .overlap-card-wrapper {
+            width: 100%;
+        }
+        .frame-backdrop {
+            display: none;
+        }
+        .principles-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .materials-categories {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+    }
+</style>

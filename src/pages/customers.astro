@@ -1,0 +1,602 @@
+---
+/**
+ * customers.astro - Global Partnerships & Clients Detail Page
+ * A highly polished, single-column editorial narrative that is clean,
+ * elegant, and 100% robust on all screen widths.
+ * Refactored to use modular SourcingMap component.
+ */
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import SourcingMap from '../components/SourcingMap.astro';
+
+// Image Imports
+import studioImageRaw from '../assets/shop/6084A0C6-F928-4EEA-899D-FCA1E770D7E9_Original.jpg';
+
+// Customer Logo Imports
+import logo2 from '../assets/logo/logo2.png';
+import logo3 from '../assets/logo/logo3.png';
+import logo4 from '../assets/logo/logo4.png';
+import logo5 from '../assets/logo/logo5.png';
+import logo6 from '../assets/logo/logo6.png';
+import logo7 from '../assets/logo/logo7.png';
+import logo8 from '../assets/logo/logo8.png';
+import logo9 from '../assets/logo/logo9.png';
+import logo10 from '../assets/logo/logo10.png';
+import logo12 from '../assets/logo/logo12.png';
+import logo13 from '../assets/logo/logo13.png';
+
+import logo21Avif from '../assets/logo/logo21.avif';
+import logo22Avif from '../assets/logo/logo22.avif';
+import logo23Avif from '../assets/logo/logo23.avif';
+import logo31 from '../assets/logo/logo31.png';
+import logo32 from '../assets/logo/logo32.png';
+import logo33 from '../assets/logo/logo33.png';
+import logo34 from '../assets/logo/logo34.png';
+import logo35 from '../assets/logo/logo35.png';
+import logo36 from '../assets/logo/logo36.png';
+import logo37 from '../assets/logo/logo37.png';
+import logo101 from '../assets/logo/logo101.webp';
+import logo201 from '../assets/logo/logo201.svg';
+
+const clientLogos = [
+    { src: logo21Avif, alt: "Customer Logo 21" },
+    { src: logo2, alt: "Customer Logo 2" },
+    { src: logo3, alt: "Customer Logo 3" },
+    { src: logo4, alt: "Customer Logo 4" },
+    { src: logo5, alt: "Customer Logo 5" },
+    { src: logo6, alt: "Customer Logo 6" },
+    { src: logo7, alt: "Customer Logo 7" },
+    { src: logo8, alt: "Customer Logo 8" },
+    { src: logo9, alt: "Customer Logo 9" },
+    { src: logo10, alt: "Customer Logo 10" },
+    { src: logo12, alt: "Customer Logo 12" },
+    { src: logo13, alt: "Customer Logo 13" },
+    { src: logo22Avif, alt: "Customer Logo 22 AVIF" },
+    { src: logo23Avif, alt: "Customer Logo 23 AVIF" },
+    { src: logo31, alt: "Customer Logo 31" },
+    { src: logo32, alt: "Customer Logo 32" },
+    { src: logo33, alt: "Customer Logo 33" },
+    { src: logo34, alt: "Customer Logo 34" },
+    { src: logo35, alt: "Customer Logo 35" },
+    { src: logo36, alt: "Customer Logo 36" },
+    { src: logo37, alt: "Customer Logo 37" },
+    { src: logo101, alt: "Customer Logo 101" },
+    { src: logo201, alt: "Customer Logo 201" },
+];
+---
+
+<Layout title="Our Customers & Partners | Indido Apparel" description="Learn about the diverse range of fashion brands, global retailers, and private label partners we support through collaborative sourcing and reliable manufacturing.">
+    <!-- Ambient Blur Background Orbs -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Editorial Header -->
+    <header class="story-hero-section reveal-on-scroll">
+        <div class="title-line-container">
+            <span class="title-line"></span>
+            <span class="eyebrow">GLOBAL PARTNERSHIPS</span>
+            <span class="title-line"></span>
+        </div>
+        <h1 class="story-main-title split-text-scroll">Connecting Brands to Global Sourcing <em>Networks</em>.</h1>
+        <p class="story-subtitle split-text-scroll">Fashion Brands. Retailers. Wholesalers &amp; Private Labels.</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="story-container">
+        <!-- Section 1: Introduction (Image-Left, Card-Right) -->
+        <section class="overlap-section reveal-on-scroll">
+            <div class="overlap-grid">
+                <!-- Left: Styled Image with Offset Border Frame -->
+                <div class="overlap-image-container">
+                    <div class="frame-backdrop"></div>
+                    <Image src={studioImageRaw} alt="Apparel designers in collaborative studio" class="overlap-img" width={700} />
+                </div>
+                <!-- Right: Overlapping Text Card -->
+                <div class="overlap-card-wrapper">
+                    <div class="overlap-card">
+                        <header class="section-header">
+                            <span class="section-number">01 /</span>
+                            <h2 class="section-title">Delivering <em>Dependability</em></h2>
+                            <span class="header-divider"></span>
+                        </header>
+                        <div class="section-body">
+                            <p class="brand-statement">
+                                "We build lasting relationships on trust, consistency, and results. That is why our clients treat us as their long-term sourcing team."
+                            </p>
+                            <p>
+                                At Indido Apparel, we work with a diverse range of customers across global markets, including fashion brands, retailers, wholesalers, importers, and private label businesses. Each partnership is built around a shared goal: delivering the right product, at the right quality, at the right price, and on time.
+                            </p>
+                            <p>
+                                Our customers value us for our transparent process, dependable communication, and hands-on approach to sourcing and production management. From product development and supplier selection to quality assurance and delivery coordination, we support every stage with precision and care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Our Customers Logo Scroll Carousel -->
+        <section class="customers-carousel-section reveal-on-scroll">
+            <div class="principles-heading">
+                <span class="eyebrow">TRUSTED BY LEADING BRANDS</span>
+                <h2>Our <em>Customers</em></h2>
+                <p class="reach-subtitle">Connecting Continents - Asia, Europe and USA</p>
+          </div>
+            <div class="logo-slider-container">
+                <div class="logo-slider-viewport">
+                    <div class="logo-slider-track">
+                        {/* First sequence of logos */}
+                        {clientLogos.map((logo) => (
+                            <div class="logo-item">
+                                <div class="logo-card">
+                                    <Image src={logo.src} alt={logo.alt} height={120} class="client-logo-img" />
+                                </div>
+                            </div>
+                        ))}
+                        {/* Duplicate sequence of logos for seamless infinite scrolling */}
+                        {clientLogos.map((logo) => (
+                            <div class="logo-item">
+                                <div class="logo-card">
+                                    <Image src={logo.src} alt={logo.alt} height={120} class="client-logo-img" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: What We Stand For (Standalone Grid) -->
+        <section class="principles-section reveal-on-scroll">
+            <div class="principles-heading">
+                <span class="eyebrow">OUR PARTNERSHIP VALUES</span>
+                <h2>Sourcing &amp; Scaling <em>Built for You</em></h2>
+            </div>
+            <div class="principles-grid">
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/></svg>
+                        </div>
+                        <h3>Startups &amp; Established Brands</h3>
+                    </div>
+                    <p>We provide flexible production pathways, supporting low-MOQ sampling programs for growing labels and large-scale bulk support for established retailers.</p>
+                </article>
+
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shirt"><path d="M20.38 3.46 16 7.84V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v3.84L3.62 3.46a2 2 0 0 0-2.82 0l-.18.18a2 2 0 0 0 0 2.82L5 10.84v8.32a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8.32l4.38-4.38a2 2 0 0 0 0-2.82l-.18-.18a2 2 0 0 0-2.82 0z"/></svg>
+                        </div>
+                        <h3>Multi-Category Programs</h3>
+                    </div>
+                    <p>Access structured manufacturing bases specializing in structured knits, wovens, denim fits, jersey casualwear, and heavy utility workwear.</p>
+                </article>
+
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h3>End-to-End Sourcing</h3>
+                    </div>
+                    <p>Hands-on representation covers tech pack translation, factory allocations, raw material tracking, lab test approvals, and full logistics management.</p>
+                </article>
+
+                <article class="principle-card">
+                    <div class="card-header-row">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        </div>
+                        <h3>Global Reach, Local Sourcing</h3>
+                    </div>
+                    <p>Optimize production across key global manufacturing hubs (India, Bangladesh, Vietnam, Cambodia) with local experts securing pricing and lead times.</p>
+                </article>
+            </div>
+        </section>
+
+
+        <!-- Sourcing Footprint Map Component -->
+        <SourcingMap />
+    </main>
+</Layout>
+
+<style>
+    /* Premium Lookbook Page Specific Styles */
+    :root {
+        --paper: #fcfbf9;
+        --cotton: #faf9f6;
+        --ink: #0d1e15;
+        --thread: #2e704a;
+        --prestige: #cfa667;
+        --line: rgba(13, 30, 21, 0.08);
+        --muted: #5e6f65;
+        --body-font: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    /* Ambient Glow Effects */
+    .ambient-orb {
+        position: absolute;
+        width: clamp(20rem, 40vw, 40rem);
+        height: clamp(20rem, 40vw, 40rem);
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(46, 112, 74, 0.035) 0%, rgba(252, 251, 249, 0) 70%);
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+    }
+    .orb-1 { top: 10%; left: -10%; }
+    .orb-2 { top: 40%; right: -15%; }
+    .orb-3 { bottom: 15%; left: 5%; }
+
+    /* Editorial Header */
+    .story-hero-section {
+        text-align: center;
+        margin: clamp(5rem, 8vw, 8rem) auto clamp(3rem, 5vw, 5rem);
+        padding: 0 1.5rem;
+        max-width: 68rem;
+        position: relative;
+        z-index: 1;
+    }
+    .title-line-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1.25rem;
+    }
+    .title-line {
+        flex-grow: 1;
+        height: 1px;
+        background-color: var(--ink);
+        opacity: 0.15;
+    }
+    .eyebrow {
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--thread);
+    }
+    .story-main-title {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+        font-weight: 400;
+        line-height: 1.15;
+        color: var(--ink);
+        max-width: 58rem;
+        margin: 0 auto;
+        letter-spacing: -0.02em;
+    }
+    .story-main-title em {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--thread);
+    }
+    .story-subtitle {
+        font-family: var(--body-font), sans-serif;
+        font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-top: 1.5rem;
+        font-weight: 500;
+    }
+
+    /* Narrative Container */
+    .story-container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 4vw, 4rem) 8rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Section 1: Overlap Grid Layout */
+    .overlap-section {
+        margin-bottom: clamp(6rem, 12vw, 10rem);
+    }
+    .overlap-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        gap: 2rem;
+    }
+    .overlap-image-container {
+        grid-column: 1 / 8;
+        grid-row: 1;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4/3;
+    }
+    .frame-backdrop {
+        position: absolute;
+        top: -1.5rem;
+        left: -1.5rem;
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--ink);
+        opacity: 0.07;
+        border-radius: 8px;
+        z-index: 0;
+    }
+    .overlap-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 30px 60px rgba(23, 32, 28, 0.08);
+        position: relative;
+        z-index: 1;
+    }
+    .overlap-card-wrapper {
+        grid-column: 6 / 13;
+        grid-row: 1;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .overlap-card {
+        background: var(--cotton);
+        border: 1px solid var(--line);
+        padding: clamp(2rem, 4vw, 3.8rem) clamp(2rem, 4vw, 3.5rem);
+        border-radius: 12px;
+        box-shadow: 0 25px 60px rgba(23, 32, 28, 0.04);
+        pointer-events: auto;
+    }
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .section-number {
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--thread);
+        letter-spacing: 0.05em;
+    }
+    .section-title {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+    }
+    .section-title em {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        color: var(--thread);
+    }
+    .header-divider {
+        flex-grow: 1;
+        height: 1px;
+        background-color: var(--line);
+    }
+    .brand-statement {
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        line-height: 1.6;
+        color: var(--ink);
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        border-left: 3px solid var(--thread);
+        padding-left: 1.25rem;
+    }
+    .section-body p {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        line-height: 1.7;
+        color: var(--muted);
+        margin-bottom: 1.2rem;
+    }
+    .section-body p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Section 2: Principles Grid Layout */
+    .principles-section {
+        border-top: 1px solid var(--line);
+        padding-top: clamp(4rem, 8vw, 8rem);
+        margin-bottom: clamp(6rem, 12vw, 10rem);
+    }
+    .principles-heading {
+        text-align: center;
+        margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .principles-heading h2 {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(1.8rem, 3.8vw, 3rem);
+        font-weight: 400;
+        color: var(--ink);
+        margin-top: 0.5rem;
+    }
+    .principles-heading h2 em {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-style: italic;
+        color: var(--thread);
+    }
+    .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.2rem;
+    }
+    .principle-card {
+        background-color: var(--cotton);
+        border: 1px solid var(--line);
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+        box-shadow: 0 10px 25px rgba(23, 32, 28, 0.02);
+        text-align: left;
+    }
+    .principle-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(46, 112, 74, 0.06);
+        border-color: var(--thread);
+    }
+    .card-header-row {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        text-align: left;
+    }
+    .icon-wrapper {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: rgba(46, 112, 74, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--thread);
+        flex-shrink: 0;
+    }
+    .principle-card h3 {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+        text-align: left;
+    }
+    .principle-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0;
+        text-align: left;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 1024px) {
+        .overlap-image-container {
+            grid-column: 1 / 8;
+        }
+        .overlap-card-wrapper {
+            grid-column: 5 / 13;
+        }
+        .principles-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .overlap-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .overlap-image-container {
+            aspect-ratio: 4/3;
+            width: 100%;
+        }
+        .overlap-card-wrapper {
+            width: 100%;
+        }
+        .frame-backdrop {
+            display: none;
+        }
+        .principles-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+
+    /* Customer logo carousel styling */
+    .customers-carousel-section {
+        border-top: 1px solid var(--line);
+        padding-top: clamp(4rem, 8vw, 8rem);
+        margin-bottom: clamp(6rem, 12vw, 10rem);
+    }
+    .logo-slider-container {
+        width: 100%;
+        max-width: 80rem;
+        margin: 2.5rem auto 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+    .logo-slider-container::before,
+    .logo-slider-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: clamp(2rem, 10vw, 8rem);
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .logo-slider-container::before {
+        left: 0;
+        background: linear-gradient(to right, var(--paper) 0%, rgba(252, 251, 249, 0) 100%);
+    }
+    .logo-slider-container::after {
+        right: 0;
+        background: linear-gradient(to left, var(--paper) 0%, rgba(252, 251, 249, 0) 100%);
+    }
+    .logo-slider-viewport {
+        width: 100%;
+        overflow: hidden;
+        padding: 1.5rem 0;
+    }
+    .logo-slider-track {
+        display: flex;
+        width: max-content;
+        gap: 2rem;
+        animation: logo-infinite-scroll 30s linear infinite;
+    }
+    .logo-slider-track:hover {
+        animation-play-state: paused;
+    }
+    .logo-item {
+        flex-shrink: 0;
+        width: clamp(14rem, 24vw, 18rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo-card {
+        background: var(--cotton);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 10rem;
+        box-shadow: 0 4px 20px rgba(23, 32, 28, 0.01);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .logo-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--thread);
+        box-shadow: 0 16px 36px rgba(46, 112, 74, 0.06);
+    }
+    .client-logo-img {
+        max-height: 6rem;
+        max-width: 90%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: brightness(0) opacity(0.45);
+        transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .logo-card:hover .client-logo-img {
+        filter: brightness(0) opacity(0.85);
+        transform: scale(1.05);
+    }
+    @keyframes logo-infinite-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-50% - 1rem));
+        }
+    }
+</style>

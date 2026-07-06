@@ -1,0 +1,531 @@
+---
+/**
+ * SourcingMap.astro - Interactive Asia Sourcing Network Map
+ * Displays a styled map outline with interactive hotspots (pins) and region selectors
+ * for the 7 sourcing base countries.
+ */
+import { Image } from 'astro:assets';
+import mapImage from '../assets/sourcing_asia_map.jpg';
+---
+
+<section class="global-reach-section reveal-on-scroll">
+    <div class="reach-heading">
+        <span class="eyebrow">Worldwide Capabilities</span>
+        <h2>Global Sourcing <em>Footprint</em></h2>
+        <p class="reach-subtitle">Connecting brands to highly specialized garment production bases across key manufacturing destinations.</p>
+    </div>
+
+    <div class="map-interactive-container">
+        <div class="map-wrapper">
+            <Image src={mapImage} alt="Indido Apparel Asia Sourcing Network Map" class="world-map-bg" />
+            
+            <div class="map-pin pin-india" data-country="india" style="top: 59%; left: 45.5%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>India</h4>
+                    <p>Key production base offering craftsmanship, scalability, and rich textile capabilities across diverse categories.</p>
+                </div>
+            </div>
+            
+            <div class="map-pin pin-bangladesh" data-country="bangladesh" style="top: 64.8%; left: 52.1%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>Bangladesh</h4>
+                    <p>Globally recognized apparel hub delivering volume, scale, and competitive pricing in knits, wovens, and core fashion.</p>
+                </div>
+            </div>
+
+            <div class="map-pin pin-vietnam" data-country="vietnam" style="top: 68%; left: 60%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>Vietnam</h4>
+                    <p>Strong manufacturing discipline and refined workmanship for brands requiring reliable quality and execution.</p>
+                </div>
+            </div>
+
+            <div class="map-pin pin-indonesia" data-country="indonesia" style="top: 86%; left: 58%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>Indonesia</h4>
+                    <p>Reliable production with a robust regional supply chain, supporting quality-driven flexible collections.</p>
+                </div>
+            </div>
+
+            <div class="map-pin pin-cambodia" data-country="cambodia" style="top: 74%; left: 60%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>Cambodia</h4>
+                    <p>Established manufacturing base for brands seeking regional flexibility and balanced capacity-cost structures.</p>
+                </div>
+            </div>
+
+            <div class="map-pin pin-myanmar" data-country="myanmar" style="top: 65.7%; left: 54.8%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>Myanmar</h4>
+                    <p>Part of our extended Asian production network, offering additional sourcing options and capacity flexibility.</p>
+                </div>
+            </div>
+
+            <div class="map-pin pin-china" data-country="china" style="top: 55%; left: 60%;">
+                <div class="pin-dot"></div>
+                <div class="pin-pulse"></div>
+                <div class="pin-tooltip">
+                    <h4>China</h4>
+                    <p>Deep technical infrastructure and specialized production capabilities for high-speed, technical, or large-scale categories.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reach-tabs">
+        <button class="tab-btn active" data-country="india">India</button>
+        <button class="tab-btn" data-country="bangladesh">Bangladesh</button>
+        <button class="tab-btn" data-country="vietnam">Vietnam</button>
+        <button class="tab-btn" data-country="indonesia">Indonesia</button>
+        <button class="tab-btn" data-country="cambodia">Cambodia</button>
+        <button class="tab-btn" data-country="myanmar">Myanmar</button>
+        <button class="tab-btn" data-country="china">China</button>
+    </div>
+
+    <div class="country-info-showcase">
+        <div class="showcase-content">
+            <span class="showcase-badge" id="showcase-highlight">Key Sourcing Base • Craftsmanship & Scalability</span>
+            <h3 class="showcase-title" id="showcase-name">India</h3>
+            <p class="showcase-desc" id="showcase-desc">One of our key production bases, offering strong capabilities across diverse apparel categories, rich textile knowledge, and flexibility in both fashion and value-driven manufacturing. Our partners in India support a wide range of product types with a balance of craftsmanship, scalability, and commercial efficiency.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .reach-heading {
+        text-align: center;
+        margin-bottom: clamp(3rem, 6vw, 4.5rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .reach-heading .eyebrow {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    .reach-heading h2 {
+        margin-top: 0;
+        margin-bottom: 1.25rem;
+    }
+    .reach-heading .reach-subtitle {
+        margin-top: 0;
+        margin-bottom: 0;
+        max-width: 44rem;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    }
+
+    .map-interactive-container {
+        position: relative;
+        width: 100%;
+        max-width: 72rem;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--cotton);
+        box-shadow: 0 30px 70px rgba(23, 32, 28, 0.04);
+    }
+    .map-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    .world-map-bg {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.85;
+        filter: grayscale(15%) sepia(5%);
+    }
+    [data-theme="dark"] .world-map-bg {
+        filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(90%) opacity(0.75);
+    }
+
+    /* Pins */
+    .map-pin {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        z-index: 10;
+    }
+    /* Fix: Raise z-index on hover/active to prevent tooltip overlapping issues */
+    .map-pin:hover,
+    .map-pin.active {
+        z-index: 20;
+    }
+
+    .pin-dot {
+        width: 0.65rem;
+        height: 0.65rem;
+        border-radius: 50%;
+        background-color: var(--prestige);
+        border: 2px solid var(--cotton);
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 0 10px rgba(207, 166, 103, 0.5);
+    }
+    .pin-pulse {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        background-color: rgba(207, 166, 103, 0.25);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.6);
+        z-index: 1;
+        animation: pulseWave 2s infinite ease-out;
+        pointer-events: none;
+    }
+    @keyframes pulseWave {
+        0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(2.2);
+            opacity: 0;
+        }
+    }
+
+    /* Tooltip */
+    .pin-tooltip {
+        position: absolute;
+        bottom: 1.8rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        width: 16rem;
+        background: var(--cotton);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        padding: 1.25rem;
+        border-radius: 8px;
+        box-shadow: 0 15px 35px rgba(23, 32, 28, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 100;
+        text-align: left;
+    }
+    [data-theme="dark"] .pin-tooltip {
+        background: rgba(23, 32, 28, 0.95);
+    }
+    .pin-tooltip h4 {
+        margin: 0 0 0.4rem;
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .pin-tooltip p {
+        margin: 0;
+        font-size: 0.8rem;
+        line-height: 1.45;
+        color: var(--muted);
+    }
+    .map-pin:hover .pin-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    /* Active Map Pin state when clicked/selected */
+    .map-pin.active .pin-dot {
+        background-color: var(--ink) !important;
+        border-color: var(--prestige) !important;
+        transform: scale(1.25) !important;
+        box-shadow: 0 0 15px var(--prestige) !important;
+    }
+    .map-pin.active .pin-pulse {
+        background-color: rgba(207, 166, 103, 0.45) !important;
+    }
+    .map-pin.active .pin-tooltip {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateX(-50%) translateY(0) !important;
+    }
+
+    /* Segmented Capsule Tabs Control */
+    .reach-tabs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.25rem;
+        max-width: fit-content;
+        margin: 3.5rem auto 2rem auto;
+        background: rgba(23, 32, 28, 0.03);
+        border: 1px solid var(--line);
+        padding: 0.3rem;
+        border-radius: 50px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    [data-theme="dark"] .reach-tabs {
+        background: rgba(252, 251, 249, 0.04);
+    }
+    .reach-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    .tab-btn {
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.88rem !important;
+        font-weight: 600 !important;
+        color: var(--muted) !important;
+        cursor: pointer;
+        padding: 0.6rem 1.25rem !important;
+        border-radius: 50px !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        white-space: nowrap;
+        box-shadow: none !important;
+        margin: 0 !important;
+    }
+    .tab-btn:hover {
+        color: var(--ink) !important;
+    }
+    .tab-btn.active {
+        background: var(--ink) !important;
+        color: var(--cotton) !important;
+        box-shadow: 0 4px 12px rgba(23, 32, 28, 0.12) !important;
+    }
+
+    /* Dynamic Showcase Info Card */
+    .country-info-showcase {
+        max-width: 44rem;
+        margin: 0 auto;
+        background: var(--cotton);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: clamp(2rem, 4vw, 3rem);
+        box-shadow: 0 20px 50px rgba(23, 32, 28, 0.03);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .country-info-showcase.switching {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    .showcase-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.85rem;
+    }
+    .showcase-badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--thread);
+        background: rgba(46, 112, 74, 0.05);
+        padding: 0.35rem 0.85rem;
+        border-radius: 20px;
+        margin-bottom: 0.25rem;
+    }
+    .showcase-title {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(2rem, 3.5vw, 2.6rem);
+        color: var(--ink);
+        margin: 0;
+    }
+    .showcase-desc {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--muted);
+        max-width: 36rem;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .reach-tabs {
+            justify-content: flex-start;
+            padding-inline: 1rem;
+            max-width: 100%;
+            border-radius: 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            gap: 0.5rem;
+        }
+        .tab-btn {
+            border-radius: 0 !important;
+            padding: 0.5rem 0.75rem !important;
+            border-bottom: 2px solid transparent !important;
+        }
+        .tab-btn.active {
+            background: transparent !important;
+            color: var(--thread) !important;
+            border-bottom-color: var(--thread) !important;
+            box-shadow: none !important;
+        }
+        .country-info-showcase {
+            padding: 1.5rem;
+            margin-inline: 1rem;
+        }
+        .pin-tooltip {
+            display: none !important;
+        }
+    }
+</style>
+
+<script>
+    const countryData = {
+        india: {
+            name: 'India',
+            highlight: 'Key Sourcing Base • Craftsmanship & Scalability',
+            desc: 'One of our key production bases, offering strong capabilities across diverse apparel categories, rich textile knowledge, and flexibility in both fashion and value-driven manufacturing. Our partners in India support a wide range of product types with a balance of craftsmanship, scalability, and commercial efficiency.'
+        },
+        bangladesh: {
+            name: 'Bangladesh',
+            highlight: 'High-Volume Production • Cost Efficiency',
+            desc: 'Bangladesh remains a globally recognized apparel manufacturing hub, especially for high-volume production and export-oriented garment making. Our partners there help us deliver collections with scale, competitive pricing, and strong category execution across knitwear, woven wear, and core fashion products.'
+        },
+        vietnam: {
+            name: 'Vietnam',
+            highlight: 'Manufacturing Discipline • Refined Workmanship',
+            desc: 'Vietnam is valued for its strong manufacturing discipline, quality-focused production, and export-ready apparel ecosystem. Through our partner network there, we can support brands that require reliable execution, refined workmanship, and efficient production management.'
+        },
+        indonesia: {
+            name: 'Indonesia',
+            highlight: 'Regional Supply Chain • Sourcing Depth',
+            desc: 'Indonesia adds depth to our network with reliable production capabilities and growing relevance in apparel manufacturing. It supports brands looking for flexible sourcing options with a strong regional supply chain and the ability to develop quality-driven collections.'
+        },
+        cambodia: {
+            name: 'Cambodia',
+            highlight: 'Established Sourcing • Regional Flexibility',
+            desc: 'Cambodia provides an important production base for brands seeking regional flexibility and established garment manufacturing capability. Our partner factories there contribute to a broader sourcing strategy that helps balance cost, capacity, and product requirements.'
+        },
+        myanmar: {
+            name: 'Myanmar',
+            highlight: 'Production Options • Market Diversity',
+            desc: 'Myanmar is part of our extended production network, offering additional sourcing options and capacity flexibility within the Asian manufacturing landscape. It helps us create more options for brands that need diversified production support across multiple markets.'
+        },
+        china: {
+            name: 'China',
+            highlight: 'Technical Infrastructure • Sourcing Speed & Scale',
+            desc: 'China continues to play a major role in apparel manufacturing, particularly for supply chain depth, technical infrastructure, and broad production capability. Our partner network in China allows us to support selected categories where speed, scale, or manufacturing specialization is essential.'
+        }
+    };
+
+    // Kept in module scope to handle rapid clicking accurately across triggers
+    let transitionTimeout: any;
+
+    function setupInteractiveMap() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const pins = document.querySelectorAll('.map-pin');
+        const nameEl = document.getElementById('showcase-name');
+        const highlightEl = document.getElementById('showcase-highlight');
+        const descEl = document.getElementById('showcase-desc');
+        const showcaseCard = document.querySelector('.country-info-showcase');
+
+        if (!nameEl || !highlightEl || !descEl || !showcaseCard) return;
+
+        function selectCountry(countryId: string, animateScroll = true) {
+            const data = countryData[countryId as keyof typeof countryData];
+            if (!data) return;
+
+            // Clear any pending transition to avoid overlapping race conditions
+            if (transitionTimeout) clearTimeout(transitionTimeout);
+
+            const card = showcaseCard;
+            const name = nameEl;
+            const highlight = highlightEl;
+            const desc = descEl;
+
+            if (!card || !name || !highlight || !desc) return;
+
+            // Animate fade out
+            card.classList.add('switching');
+
+            transitionTimeout = setTimeout(() => {
+                // Update content
+                name.textContent = data.name;
+                highlight.textContent = data.highlight;
+                desc.textContent = data.desc;
+
+                // Update active tab styling
+                tabs.forEach(tab => {
+                    if (tab.getAttribute('data-country') === countryId) {
+                        tab.classList.add('active');
+                        if (animateScroll) {
+                            tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+
+                // Update active map pin styling
+                pins.forEach(pin => {
+                    if (pin.classList.contains(`pin-${countryId}`)) {
+                        pin.classList.add('active');
+                    } else {
+                        pin.classList.remove('active');
+                    }
+                });
+
+                // Animate fade in
+                card.classList.remove('switching');
+            }, 200);
+        }
+
+        // Click handlers for tabs
+        tabs.forEach(tab => {
+            // Remove existing listener (if any) before adding a new one to keep memory clean during view transitions
+            tab.replaceWith(tab.cloneNode(true));
+        });
+        
+        // Re-query tabs after clone replacement
+        const newTabs = document.querySelectorAll('.tab-btn');
+        newTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const countryId = tab.getAttribute('data-country');
+                if (countryId) selectCountry(countryId, true);
+            });
+        });
+
+        // Click handlers for pins
+        pins.forEach(pin => {
+            pin.replaceWith(pin.cloneNode(true));
+        });
+        
+        const newPins = document.querySelectorAll('.map-pin');
+        newPins.forEach(pin => {
+            pin.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const countryId = pin.getAttribute('data-country');
+                if (countryId) selectCountry(countryId, true);
+            });
+        });
+
+        // Initial selection (India) - Skip scrollIntoView to prevent jumping on page load
+        selectCountry('india', false);
+    }
+
+    // Initialize setup
+    setupInteractiveMap();
+    document.addEventListener('astro:after-swap', setupInteractiveMap);
+</script>

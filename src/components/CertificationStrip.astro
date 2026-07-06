@@ -1,0 +1,244 @@
+---
+/**
+ * CertificationStrip.astro - Global Compliance Certifications Slider
+ * Renders the logo strip and details for international sustainability standards.
+ */
+import { Image } from 'astro:assets';
+import gotsLogo from '../assets/certifications/GOTS.jpg';
+import oekoTexLogo from '../assets/certifications/oeko.jpg';
+import grsLogo from '../assets/certifications/grs1.png';
+import higgLogo from '../assets/certifications/higg.png';
+import zdhcLogo from '../assets/certifications/zdhc.jpg';
+---
+
+<section class="certifications-section reveal-on-scroll">
+    <div class="section-heading-centered">
+        <span class="eyebrow">VERIFIED COMPLIANCE</span>
+        <h2>Global Sustainability <em>Certifications</em></h2>
+        <p>Our partner network adheres to leading international certifications, ensuring verified quality control, organic origins, and strict social accountability.</p>
+    </div>
+    
+    <!-- Logo Strip Carousel -->
+    <div class="logo-slider-container">
+        <div class="logo-slider-viewport">
+            <div class="logo-slider-track">
+                <div class="logo-item">
+                    <div class="logo-card">
+                        <Image src={gotsLogo} alt="Global Organic Textile Standard (GOTS)" class="cert-logo-img" width={500} />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-card">
+                        <Image src={oekoTexLogo} alt="OEKO-TEX Standard 100" class="cert-logo-img" width={500} />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-card">
+                        <Image src={grsLogo} alt="Global Recycled Standard (GRS)" class="cert-logo-img" width={500} />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-card">
+                        <Image src={higgLogo} alt="Higg Index" class="cert-logo-img" width={500} />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-card">
+                        <Image src={zdhcLogo} alt="Zero Discharge of Hazardous Chemicals (ZDHC)" class="cert-logo-img" width={500} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Certifications Section */
+    .certifications-section {
+        max-width: 80rem;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+    .section-heading-centered {
+        text-align: center;
+        max-width: 44rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .section-heading-centered h2 {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: clamp(2rem, 3.8vw, 2.8rem);
+        margin: 0;
+        color: var(--ink);
+        text-shadow: 0 4px 15px rgba(23, 32, 28, 0.05);
+    }
+    .section-heading-centered h2 em {
+        font-style: italic;
+    }
+    .section-heading-centered p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0;
+    }
+
+    .logo-slider-container {
+        width: 100%;
+        max-width: 80rem;
+        margin: 2rem auto 4rem auto;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .logo-slider-viewport {
+        width: 100%;
+        overflow: hidden;
+        padding: 1.5rem 0; /* Prevents card hover shadows from clipping */
+    }
+    
+    .logo-slider-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        width: 100%;
+    }
+    
+    .logo-item {
+        flex-shrink: 0;
+        width: 33.333%; /* 3 items per view on desktop */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1.5rem;
+    }
+
+    .logo-card {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 12rem; /* Uniform card height */
+        box-shadow: 0 4px 20px rgba(23, 32, 28, 0.02);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .logo-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--thread);
+        box-shadow: 0 16px 36px rgba(23, 32, 28, 0.06);
+    }
+    
+    .cert-logo-img {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    @media (max-width: 768px) {
+        .logo-item {
+            width: 50%; /* 2 items per view on tablet */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .logo-item {
+            width: 100%; /* 1 item per view on mobile */
+        }
+    }
+</style>
+
+<script>
+    (function() {
+        let sliderInterval: any = null;
+
+        function setupLogoSlider() {
+            const track = document.querySelector('.logo-slider-track') as HTMLElement;
+            if (!track) return;
+
+            if (sliderInterval) {
+                clearInterval(sliderInterval);
+            }
+
+            const items = track.querySelectorAll('.logo-item');
+            if (items.length === 0) return;
+
+            let currentIndex = 0;
+
+            function getItemsPerView() {
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 2;
+                return 3;
+            }
+
+            function updateSlider() {
+                const itemsPerView = getItemsPerView();
+                const maxIndex = items.length - itemsPerView;
+                
+                if (currentIndex > maxIndex) {
+                    currentIndex = 0; // Loop back
+                }
+
+                const offset = currentIndex * (100 / itemsPerView);
+                track.style.transform = `translateX(-${offset}%)`;
+            }
+
+            sliderInterval = setInterval(() => {
+                currentIndex++;
+                updateSlider();
+            }, 4000);
+
+            // Touch events for mobile swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            track.addEventListener('touchstart', (e: TouchEvent) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e: TouchEvent) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDistance = touchEndX - touchStartX;
+                const threshold = 50; // min sweep pixels
+                const itemsPerView = getItemsPerView();
+                const maxIndex = items.length - itemsPerView;
+
+                if (Math.abs(swipeDistance) > threshold) {
+                    clearInterval(sliderInterval);
+                    sliderInterval = setInterval(() => {
+                        currentIndex++;
+                        updateSlider();
+                    }, 4000);
+
+                    if (swipeDistance < 0) {
+                        // Swiped left -> next
+                        if (currentIndex < maxIndex) {
+                            currentIndex++;
+                            updateSlider();
+                        }
+                    } else {
+                        // Swiped right -> prev
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateSlider();
+                        }
+                    }
+                }
+            }, { passive: true });
+
+            window.addEventListener('resize', updateSlider);
+        }
+
+        setupLogoSlider();
+        document.addEventListener('astro:after-swap', setupLogoSlider);
+    })();
+</script>

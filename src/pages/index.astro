@@ -1,0 +1,28 @@
+---
+/**
+ * index.astro - Landing Page
+ * Root route of the website. Showcases hero, Private Label capabilities,
+ * collections, sustainability programs, partners, and contact forms.
+ * Fully modularized.
+ */
+import Layout from '../layouts/Layout.astro';
+import HomeHero from '../components/HomeHero.astro';
+import HomeFeatures from '../components/HomeFeatures.astro';
+import HomeAbout from '../components/HomeAbout.astro';
+import HomeServices from '../components/HomeServices.astro';
+import HomeSustainability from '../components/HomeSustainability.astro';
+import HomeProducts from '../components/HomeProducts.astro';
+import HomeCustomers from '../components/HomeCustomers.astro';
+import HomeContact from '../components/HomeContact.astro';
+---
+
+<Layout title="Indido Apparel">
+    <HomeHero />
+    <HomeFeatures />
+    <HomeAbout />
+    <HomeServices />
+    <HomeSustainability />
+    <HomeProducts />
+    <HomeCustomers />
+    <HomeContact />
+</Layout>

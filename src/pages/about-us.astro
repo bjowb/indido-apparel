@@ -1,0 +1,620 @@
+---
+/**
+ * about-us.astro - Immersive Brand Story
+ * A highly polished, single-column editorial narrative that is clean,
+ * elegant, and 100% robust on all screen widths.
+ */
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Image Imports
+import aboutHeroImageRaw from '../assets/about_us/about_us_in1.png';
+import fabricDetailRaw from '../assets/about_us/about_us_in2.png';
+import studioImageRaw from '../assets/about_us/about_us_in3.png';
+---
+
+<Layout title="About Us | Indido Apparel" description="Welcome to Indido Apparel. Where your fashion brand vision meets global sourcing and consulting expertise.">
+    <!-- Floating Ambient Orbs (Pristine light particles matching home page) -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Editorial Header -->
+    <header class="story-hero-section reveal-on-scroll">
+        <h1 class="story-page-title" style="font-family: var(--font-heading) !important; font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; color: var(--ink); margin: 0 auto 1.5rem; text-transform: capitalize;">Ind-I-do Story</h1>
+        <div class="title-line-container">
+            <span class="title-line"></span>
+            <span class="eyebrow">ABOUT OUR COMPANY</span>
+            <span class="title-line"></span>
+        </div>
+        <h2 class="story-main-title split-text-scroll">Where your vision meets global <em>expertise</em>.</h2>
+        <p class="story-subtitle split-text-scroll">Indido Apparel Brand Story</p>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="story-container">
+        <!-- Section 1: Welcome (Image-Left, Card-Right) -->
+        <section class="overlap-section reveal-on-scroll">
+            <div class="overlap-grid">
+                <!-- Left: Styled Image with Offset Border Frame -->
+                <div class="overlap-image-container">
+                    <div class="frame-backdrop"></div>
+                    <Image src={aboutHeroImageRaw} alt="Apparel fabric cutting and design studio" class="overlap-img" width={700} />
+                </div>
+                <!-- Right: Overlapping Text Card -->
+                <div class="overlap-card-wrapper">
+                    <div class="overlap-card">
+                        <header class="section-header">
+                            <span class="section-number">01 / Welcome</span>
+                            <h2 class="section-title">A Creative <em>Journey</em></h2>
+                            <span class="header-divider"></span>
+                        </header>
+                        <div class="section-body">
+                            <p class="brand-statement">
+                                "We deeply believe that building and scaling a fashion brand should be an exciting, rewarding, and creative journey, rather than an overwhelming logistical challenge."
+                            </p>
+                            <p>
+                                As a premier global fashion sourcing and consulting company, we are passionately dedicated to delivering seamless, end-to-end solutions through our highly optimized worldwide sourcing platform. We understand that the modern fashion landscape is dynamic and competitive, which is why we are here to shoulder the complexities of production, leaving you free to focus on what you do best: dreaming, designing, and growing your brand's unique identity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Glocal Operations (Reverse overlap layout: Image-Right, Card-Left) -->
+        <section class="overlap-section reverse reveal-on-scroll">
+            <div class="overlap-grid">
+                <!-- Right: Styled Image with Offset Border Frame -->
+                <div class="overlap-image-container">
+                    <div class="frame-backdrop"></div>
+                    <Image src={fabricDetailRaw} alt="Close-up of premium woven fabric details" class="overlap-img" width={700} />
+                </div>
+                <!-- Left: Overlapping Text Card -->
+                <div class="overlap-card-wrapper">
+                    <div class="overlap-card">
+                        <div class="section-body">
+                            <p class="brand-statement">
+                            At the heart of our operations is our signature 'GLOCAL' expertise—a thoughtful and strategic approach that perfectly balances the expansive scale of our global reach with a deep, nuanced understanding of local manufacturing ecosystems.
+                                We do not just find factories; we cultivate relationships with the best artisans and manufacturers around the world, ensuring that every cultural and technical nuance is leveraged to your advantage. Whether you are an emerging label taking your very first steps into production or an established, ambitious retailer looking to scale your operations efficiently, our seasoned team is here to help you transform your creative vision into commercially successful, market-ready collections with exceptional precision and care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Pullquote Highlight -->
+        <div class="pullquote-block reveal-on-scroll">
+            <div class="pullquote-line"></div>
+            <blockquote>
+                "We navigate the intricate web of the global supply chain so that your brand can thrive without operational friction."
+            </blockquote>
+            <div class="pullquote-line"></div>
+        </div>
+
+        <!-- Section 3: Seamless Integration (Image-Left, Card-Right) -->
+        <section class="overlap-section reveal-on-scroll">
+            <div class="overlap-grid">
+                <!-- Left: Styled Image with Offset Border Frame -->
+                <div class="overlap-image-container">
+                    <div class="frame-backdrop"></div>
+                    <Image src={studioImageRaw} alt="Textile showroom and pattern drafting" class="overlap-img" width={700} />
+                </div>
+                <!-- Right: Overlapping Text Card -->
+                <div class="overlap-card-wrapper">
+                    <div class="overlap-card">
+                        <div class="section-body">
+                            <p class="brand-statement">
+                                We take immense pride in acting as a dedicated, fully integrated extension of your own team. We believe in open communication, absolute transparency, and working side-by-side with you to bring your ideas to life.
+                                From the initial spark of concept and design to sourcing the perfect raw materials, meticulously managing the manufacturing process, ensuring rigorous quality assurance, and handling the final, complex logistics, we manage every single stage of the product lifecycle on your behalf.
+                                Our comprehensive, integrated approach is strategically designed to provide you with exceptional garment quality, rapid speed to market, and unmatched cost efficiency.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Our People -->
+        <section class="people-section reveal-on-scroll">
+            <header class="section-header centered-header">
+                <span class="section-number">02 / Our People</span>
+                <h2 class="section-title">The Foundation of <em>Everything We Do</em></h2>
+                <span class="header-divider"></span>
+                <p class="people-intro">
+                    We believe our team is the foundation of everything we do. Behind every successful order, every smooth process, and every strong client relationship is a group of people who bring expertise, energy, and accountability to their work.
+                </p>
+            </header>
+            
+            <div class="values-grid">
+                <!-- Value 1: A Dynamic Team -->
+                <article style="--delay: 0ms;">
+                    <div class="value-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>A Dynamic Team</h3>
+                    <p>Our team is dynamic, vibrant, and multicultural, bringing together diverse backgrounds, perspectives, and skills. This diversity strengthens our ability to think creatively, solve challenges efficiently, and support clients across different markets and production environments.</p>
+                </article>
+
+                <!-- Value 2: Customer Success First -->
+                <article style="--delay: 100ms;">
+                    <div class="value-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <h3>Customer Success First</h3>
+                    <p>Customer success is deeply embedded in our way of working. We stay responsive, collaborative, and focused on delivering solutions that support our partners at every stage, from development to production and final delivery.</p>
+                </article>
+
+                <!-- Value 3: Serious & Positive -->
+                <article style="--delay: 200ms;">
+                    <div class="value-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smile"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                    </div>
+                    <h3>Serious &amp; Positive</h3>
+                    <p>We take business seriously, but we believe the process should always be built on respect, trust, and a positive spirit. That mindset helps us maintain strong partnerships, work with confidence, and create a better experience for every client we serve.</p>
+                </article>
+
+                <!-- Value 4: Built to Support Growth -->
+                <article style="--delay: 300ms;">
+                    <div class="value-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </div>
+                    <h3>Built to Support Growth</h3>
+                    <p>Our culture is designed to support long-term growth, both for our team and for the brands we work with. By combining professionalism with a people-first attitude, we create an environment where great work and lasting relationships can thrive.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    /* Editorial Header */
+    .story-hero-section {
+        text-align: center;
+        padding: clamp(5rem, 10vw, 8rem) 1.5rem 3rem;
+        max-width: 90rem;
+        margin: 0 auto;
+    }
+    .title-line-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        max-width: 24rem;
+        margin: 0 auto 1.2rem;
+    }
+    .title-line {
+        flex-grow: 1;
+        height: 1px;
+        background-color: var(--ink);
+        opacity: 0.15;
+    }
+    .eyebrow {
+        font-size: 0.76rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--thread);
+    }
+    .story-main-title {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(2rem, 3.8vw, 3.4rem);
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--ink);
+        max-width: none; /* Override global 13ch limit to keep in 1 line on desktop */
+    }
+    .story-main-title em {
+        font-style: italic;
+        color: var(--thread);
+    }
+    .story-subtitle {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 0.8rem;
+        font-weight: 600;
+    }
+
+    /* Narrative Container - Stretches across screen */
+    .story-container {
+        max-width: 92rem; /* Widened to stretch throughout the entire screen */
+        margin: 0 auto;
+        padding: 0 3rem 8rem; /* Adjusted side paddings */
+        display: flex;
+        flex-direction: column;
+        gap: 8rem; /* Gaps scaled for larger sections */
+    }
+
+    /* Section structure with Architectural Card styling */
+    .section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        position: relative;
+        margin-bottom: 2rem;
+    }
+    .section-number {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--thread);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .section-title {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+    }
+    .section-title em {
+        font-style: italic;
+    }
+    .header-divider {
+        width: 3rem;
+        height: 1px;
+        background-color: var(--thread);
+        margin-top: 1rem;
+        display: block;
+    }
+
+    .section-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+    .section-body p {
+        font-family: var(--font-body) !important;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--muted);
+        margin: 0;
+    }
+    .brand-statement {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        font-style: italic;
+        line-height: 1.45;
+        color: var(--thread);
+        text-align: center;
+        margin-bottom: 2rem !important;
+        font-weight: 400;
+        padding: 0 1rem;
+    }
+    .lead-paragraph {
+        font-family: var(--font-body) !important;
+        font-size: 1.18rem !important;
+        line-height: 1.7 !important;
+        color: var(--ink) !important;
+        font-weight: 500;
+    }
+
+    /* Pullquote block */
+    .pullquote-block {
+        text-align: center;
+        max-width: 44rem;
+        margin: 1rem auto;
+    }
+    .pullquote-line {
+        height: 1px;
+        background-color: var(--line);
+    }
+    .pullquote-block blockquote {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+        font-style: italic;
+        line-height: 1.45;
+        color: var(--thread);
+        padding: 2.2rem 1rem;
+        margin: 0;
+    }
+
+    /* Floating Ambient Particles (orb-1, orb-2, orb-3 matching home page) */
+    .ambient-orb {
+        position: absolute;
+        width: clamp(20rem, 40vw, 35rem);
+        height: clamp(20rem, 40vw, 35rem);
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.18;
+        pointer-events: none;
+        z-index: -1;
+    }
+    .orb-1 {
+        top: 15%;
+        right: -10%;
+        background: radial-gradient(circle, rgba(46, 112, 74, 0.25) 0%, transparent 70%);
+    }
+    .orb-2 {
+        top: 45%;
+        left: -15%;
+        background: radial-gradient(circle, rgba(81, 99, 74, 0.2) 0%, transparent 70%);
+    }
+    .orb-3 {
+        bottom: 10%;
+        right: -5%;
+        background: radial-gradient(circle, rgba(46, 112, 74, 0.2) 0%, transparent 70%);
+    }
+
+    /* Overlapping Section Styling */
+    .overlap-section {
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .overlap-grid {
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        align-items: center;
+        position: relative;
+    }
+
+    .overlap-image-container {
+        position: relative;
+        width: 100%;
+        max-width: 36rem; /* Increased container width */
+        margin: 0 auto;
+        display: block;
+    }
+
+    .overlap-img {
+        width: 100%;
+        aspect-ratio: 1.5 / 1; /* Shorter height (width is 1.5x the height) */
+        object-fit: cover;
+        border-radius: 4px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 1rem 3rem rgba(23, 32, 28, 0.08);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .frame-backdrop {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--thread);
+        border-radius: 4px;
+        pointer-events: none;
+        z-index: 1;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .overlap-image-container:hover .overlap-img {
+        transform: translate(4px, 4px);
+    }
+    .overlap-image-container:hover .frame-backdrop {
+        transform: translate(-4px, -4px);
+    }
+
+    .overlap-card-wrapper {
+        position: relative;
+        z-index: 3;
+        margin-left: -8rem; /* Balanced overlap for wider image container */
+    }
+
+    .overlap-card {
+        background: var(--cotton);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: clamp(2.5rem, 4vw, 3.5rem); /* Scaled padding */
+        text-align: left;
+        box-shadow: 0 1.5rem 4rem rgba(23, 32, 28, 0.04);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    .overlap-card:hover {
+        border-color: var(--thread);
+        box-shadow: 0 2rem 5rem rgba(23, 32, 28, 0.07);
+        transform: translateY(-2px);
+    }
+
+    /* Reverse overlapping alignment styling */
+    .overlap-section.reverse .overlap-grid {
+        grid-template-columns: 1.18fr 0.82fr;
+    }
+    .overlap-section.reverse .overlap-image-container {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .overlap-section.reverse .overlap-card-wrapper {
+        grid-column: 1;
+        grid-row: 1;
+        margin-left: 0;
+        margin-right: -8rem; /* Balanced overlap for wider image container */
+    }
+    .overlap-section.reverse .frame-backdrop {
+        left: auto;
+        right: -16px;
+    }
+    .overlap-section.reverse .overlap-image-container:hover .overlap-img {
+        transform: translate(-4px, 4px);
+    }
+    .overlap-section.reverse .overlap-image-container:hover .frame-backdrop {
+        transform: translate(4px, -4px);
+    }
+
+    @media (max-width: 1200px) {
+        .overlap-card-wrapper {
+            margin-left: -4.5rem;
+        }
+        .overlap-section.reverse .overlap-card-wrapper {
+            margin-right: -4.5rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .overlap-grid {
+            grid-template-columns: 0.85fr 1.15fr;
+        }
+        .overlap-card-wrapper {
+            margin-left: -2rem;
+        }
+        .overlap-section.reverse .overlap-grid {
+            grid-template-columns: 1.15fr 0.85fr;
+        }
+        .overlap-section.reverse .overlap-card-wrapper {
+            margin-right: -2rem;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .story-container {
+            gap: 3.5rem;
+        }
+        .overlap-section {
+            margin-top: 1rem;
+        }
+        .overlap-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        .frame-backdrop {
+            top: -10px;
+            left: -10px;
+        }
+        .overlap-card-wrapper {
+            margin-left: 0;
+            width: 100%;
+        }
+        .overlap-card {
+            padding: 2rem;
+            text-align: center !important;
+        }
+        .header-divider {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* Reset reverse layout on small viewports so they stack logically */
+        .overlap-section.reverse .overlap-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        .overlap-section.reverse .overlap-image-container {
+            grid-column: auto;
+            grid-row: auto;
+        }
+        .overlap-section.reverse .overlap-card-wrapper {
+            grid-column: auto;
+            grid-row: auto;
+            margin-right: 0;
+        }
+        .overlap-section.reverse .frame-backdrop {
+            right: auto;
+            left: -10px;
+        }
+    }
+
+    /* Our People Section */
+    .people-section {
+        width: 100%;
+        margin-top: 2rem;
+    }
+    .centered-header {
+        align-items: center;
+        text-align: center;
+        max-width: 52rem;
+        margin: 0 auto 3.5rem;
+    }
+    .centered-header .header-divider {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .people-intro {
+        font-family: var(--font-body) !important;
+        font-size: 1.1rem;
+        line-height: 1.75;
+        color: var(--muted);
+        margin-top: 1.25rem;
+    }
+    .values-grid article h3 {
+        font-family: var(--font-heading) !important;
+        font-size: 1.55rem !important;
+        font-weight: 400;
+        color: var(--ink);
+        margin-bottom: 0.6rem;
+    }
+    .values-grid article p {
+        font-family: var(--font-body) !important;
+        font-size: 0.96rem !important;
+        line-height: 1.65;
+        color: var(--muted);
+    }
+
+    /* --- Cool Micro-Animations for Our People Cards --- */
+    .people-section .values-grid article {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.5s ease,
+                    background-color 0.3s ease;
+    }
+    
+    /* Left-side sliding accent border */
+    .people-section .values-grid article::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 4px;
+        height: 0;
+        background: var(--thread);
+        opacity: 0;
+        transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        border-radius: 12px 0 0 12px;
+        z-index: 3;
+    }
+    
+    .people-section .values-grid article:hover::before {
+        height: 100%;
+        opacity: 1;
+    }
+
+    /* Glow shadow effect on card hover */
+    .people-section .values-grid article:hover {
+        border-color: rgba(46, 112, 74, 0.35) !important;
+        box-shadow: 0 1.8rem 3.8rem rgba(46, 112, 74, 0.06), 0 0.5rem 1.5rem rgba(0, 0, 0, 0.02) !important;
+    }
+
+    [data-theme="dark"] .people-section .values-grid article:hover {
+        box-shadow: 0 1.8rem 3.8rem rgba(46, 112, 74, 0.12), 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Smooth SVG rotate-scale inside wrapper */
+    .people-section .values-grid article .value-icon-wrapper svg {
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+    }
+    
+    .people-section .values-grid article:hover .value-icon-wrapper svg {
+        transform: scale(1.22) rotate(10deg) !important;
+        color: var(--paper) !important;
+    }
+
+    /* Smooth icon wrapper fill transition */
+    .people-section .values-grid article .value-icon-wrapper {
+        transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .people-section .values-grid article:hover .value-icon-wrapper {
+        background: var(--thread) !important;
+        box-shadow: 0 4px 15px rgba(46, 112, 74, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+        .centered-header {
+            margin-bottom: 2.5rem;
+        }
+        .people-intro {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    }
+</style>

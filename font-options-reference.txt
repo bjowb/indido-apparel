@@ -1,0 +1,77 @@
+Indido Apparel - Font Configuration Reference
+=============================================
+
+This file saves the typography configuration options you explored for the website. 
+You can copy and paste these definitions back into your `src/styles/global.css` file at any time.
+
+--------------------------------------------------------------------------------
+SAVED SELECTION: Option 6 — "Editorial Vanguard"
+--------------------------------------------------------------------------------
+Vibe: High-contrast, runway-ready fashion editorial look. Clean, sharp, and very premium.
+
+1. Google Fonts @import (Place at the very top of global.css):
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Mulish:wght@300;400;500;600;700&display=swap");
+
+2. CSS Variables (Place inside :root {...}):
+--font-heading: 'Bodoni Moda', 'Playfair Display', 'DM Serif Display', serif;
+--font-body: 'Mulish', 'Outfit', 'Manrope', sans-serif;
+
+--------------------------------------------------------------------------------
+ALTERNATIVE: Option 5 — "Earth & Craft"
+--------------------------------------------------------------------------------
+Vibe: Organic, artisanal, craft-heavy, and warm. Matches the earthy green and terracotta palette perfectly.
+
+1. Google Fonts @import:
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap");
+
+2. CSS Variables:
+--font-heading: 'Fraunces', 'Playfair Display', 'DM Serif Display', serif;
+--font-body: 'Albert Sans', 'Outfit', 'Manrope', sans-serif;
+
+--------------------------------------------------------------------------------
+ALTERNATIVE: Option 1 — "Quiet Luxury"
+--------------------------------------------------------------------------------
+Vibe: Elegant, traditional high-end fashion editorial feel.
+
+1. Google Fonts @import:
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+2. CSS Variables:
+--font-heading: 'Cormorant Garamond', 'Playfair Display', 'DM Serif Display', serif;
+--font-body: 'Plus Jakarta Sans', 'Outfit', 'Manrope', sans-serif;
+
+--------------------------------------------------------------------------------
+ALTERNATIVE: Option 2 — "Organic & Heritage"
+--------------------------------------------------------------------------------
+Vibe: Warm, tactile, boutique didone-style look.
+
+1. Google Fonts @import:
+@import url("https://fonts.googleapis.com/css2?family=Prata&family=Outfit:wght@300;400;500;600;700;800&display=swap");
+
+2. CSS Variables:
+--font-heading: 'Prata', 'Playfair Display', 'DM Serif Display', serif;
+--font-body: 'Outfit', 'Manrope', sans-serif;
+
+--------------------------------------------------------------------------------
+ALTERNATIVE: Option 3 — "Architectural & Contemporary"
+--------------------------------------------------------------------------------
+Vibe: Bold, structural, design-forward, and modern.
+
+1. Google Fonts @import:
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=Syne:wght@500;700;800&display=swap");
+
+2. CSS Variables:
+--font-heading: 'Syne', 'Playfair Display', 'DM Serif Display', serif;
+--font-body: 'DM Sans', 'Outfit', 'Manrope', sans-serif;
+
+--------------------------------------------------------------------------------
+ALTERNATIVE: Option 4 — "Technical Sourcing"
+--------------------------------------------------------------------------------
+Vibe: High-precision, clean, modernist, and tech-driven sourcing.
+
+1. Google Fonts @import:
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+2. CSS Variables:
+--font-heading: 'Space Grotesk', 'Playfair Display', 'DM Serif Display', serif;
+--font-body: 'Inter', 'Outfit', 'Manrope', sans-serif;

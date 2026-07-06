@@ -1,0 +1,125 @@
+---
+/**
+ * CollectionNav.astro - Sub-navigation bar for collection pages (Bottom Placement).
+ * Allows quick transitions between different lookbook collections.
+ */
+const pathname = Astro.url.pathname.replace(/\/$/, '');
+
+const collections = [
+{ name: "Men", href: "/collections/men" },
+  { name: "Women", href: "/collections/women" },
+  { name: "Kids", href: "/collections/child" },
+  { name: "Denim", href: "/collections/denim" },
+  { name: "Jersey", href: "/collections/jersey" },
+  { name: "Workwear", href: "/collections/workwear" },
+];
+---
+
+<div class="collection-nav-wrapper reveal-on-scroll">
+    <div class="collection-nav-title">Explore Other Collections</div>
+    <div class="collection-nav-container">
+        {collections.map(item => {
+            const isActive = pathname === item.href;
+            return (
+                <a 
+                    href={item.href} 
+                    class={`collection-nav-link ${isActive ? 'active' : ''}`}
+                >
+                    {item.name}
+                </a>
+            );
+        })}
+    </div>
+</div>
+
+<style>
+    .collection-nav-wrapper {
+        width: 100%;
+        background-color: var(--cotton, #faf9f6);
+        border-top: 1px solid rgba(23, 32, 28, 0.08);
+        padding: 3rem 0;
+        margin-top: 5rem; /* Space below the product grid */
+        position: relative;
+        z-index: 10;
+        text-align: center;
+    }
+    
+    .collection-nav-title {
+        font-family: var(--font-body), sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--ink, #17201c);
+        margin-bottom: 1.5rem;
+    }
+    
+    .collection-nav-container {
+        max-width: 80rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        padding: 0 1.5rem;
+    }
+    
+    .collection-nav-link {
+        font-family: var(--font-body), sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted, #657069);
+        text-decoration: none;
+        padding: 0.4rem 0;
+        position: relative;
+        transition: color 0.3s ease, font-weight 0.3s ease;
+    }
+    
+    .collection-nav-link:hover {
+        color: var(--ink, #17201c);
+    }
+    
+    .collection-nav-link.active {
+        color: var(--ink, #17201c);
+        font-weight: 600;
+    }
+    
+    .collection-nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--ink, #17201c);
+    }
+    
+    /* Responsive styling for smaller viewports */
+    @media (max-width: 900px) {
+        .collection-nav-wrapper {
+            padding: 2.5rem 0;
+            margin-top: 3.5rem;
+        }
+        
+        .collection-nav-container {
+            gap: 1.25rem;
+            justify-content: flex-start;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        
+        .collection-nav-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .collection-nav-link {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.5rem;
+        }
+    }
+</style>

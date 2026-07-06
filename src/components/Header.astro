@@ -1,0 +1,143 @@
+---
+/**
+ * Header.astro - Navigation Header Component
+ * Encapsulates the branding brand-mark, desktop nav menu, mobile menu toggle,
+ * and the script logic for drawer transitions and scroll-based shrink.
+ */
+import { Image } from 'astro:assets';
+import logoImage from '../assets/logo/LOGO.png';
+---
+
+<header class="nav-bar" aria-label="Main navigation">
+    <!-- LOGO -->
+    <a class="brand-mark" href="/" aria-label="Indido Apparel home">
+        <Image src={logoImage} alt="Indido Apparel" class="brand-logo" />
+    </a>
+
+    <!-- Mobile menu hamburger button -->
+    <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-menu">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+    </button>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/#company">About</a>
+        <a href="/#capabilities">Services</a>
+        <a href="/#sustainability">Sustainability</a>
+        <a href="/#latest-collection">Product</a>
+        <a href="/#customers">Customers</a>
+        <a href="/#contact">Contact</a>
+    </nav>
+</header>
+
+<script>
+  /**
+   * Mobile Navigation Coordination
+   * Handles drawer sliding menu toggles, overlay click resets,
+   * and dropdown accordion collapses for nested menus under 900px wide.
+   */
+  const setupMobileNav = () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-bar nav');
+    
+    if (menuToggle && navMenu) {
+      // Toggle navigation menu visibility drawer
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        const isOpen = navMenu.classList.contains('open');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        menuToggle.innerHTML = isOpen 
+          ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+        
+        // Collapses all submenus when navigation bar closes
+        if (!isOpen) {
+          navMenu.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+            dropdown.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+      
+      // Collapse mobile menu upon clicking links
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('open');
+          document.body.style.overflow = '';
+          menuToggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+          
+          // Collapses all submenus when navigating to any page or section anchor
+          navMenu.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+            dropdown.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+          });
+        });
+      });
+
+      // Handlers for mobile dropdown toggle click events (collapsible menus)
+      navMenu.querySelectorAll('.nav-dropdown-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const dropdown = btn.closest('.nav-dropdown');
+          if (!dropdown) return;
+          
+          const isMobile = window.innerWidth <= 900;
+          if (isMobile) {
+            e.preventDefault();
+            const isActive = dropdown.classList.contains('active');
+            
+            // Collapses all other submenus first to avoid overlapping dropdowns
+            navMenu.querySelectorAll('.nav-dropdown').forEach(d => {
+              if (d !== dropdown) {
+                d.classList.remove('active');
+                d.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+              }
+            });
+            
+            dropdown.classList.toggle('active');
+            btn.setAttribute('aria-expanded', (!isActive).toString());
+          }
+        });
+      });
+    }
+  };
+
+  /**
+   * Dynamic Navbar Scroll Controller with Hysteresis
+   * Uses a scroll buffer zone to prevent feedback loops and jittering when the
+   * navbar height shrinks and collapses the document height.
+   */
+  const setupNavbarScroll = () => {
+    const navBar = document.querySelector('.nav-bar');
+    if (!navBar) return;
+    
+    const checkScroll = () => {
+      const currentScroll = window.scrollY;
+      const isScrolled = navBar.classList.contains('scrolled');
+      
+      if (!isScrolled && currentScroll > 120) {
+        navBar.classList.add('scrolled');
+      } else if (isScrolled && currentScroll < 40) {
+        navBar.classList.remove('scrolled');
+      }
+    };
+    
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll(); // Check state immediately on mount
+  };
+
+  // Run header configuration scripts
+  setupMobileNav();
+  setupNavbarScroll();
+
+  // Listen for swap events during page transitions (for Astro View Transitions support)
+  document.addEventListener('astro:after-swap', () => {
+    setupMobileNav();
+    setupNavbarScroll();
+  });
+</script>

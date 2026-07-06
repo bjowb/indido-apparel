@@ -1,0 +1,307 @@
+---
+/**
+ * Footer.astro - Global Website Footer Component
+ * Displays branding logo, navigation links, physical office address,
+ * contact email, copyright notices, and legal policy pages.
+ * Reformed to include premium socials, investor newsletter updates,
+ * and high-contrast editorial layouts.
+ */
+import { Image } from 'astro:assets';
+import logoImage from '../assets/logo/LOGO.png';
+---
+
+<footer class="site-footer">
+    <!-- Centered Brand top section -->
+    <div class="footer-brand-top">
+        <a class="brand-mark" href="/" aria-label="Indido Apparel home">
+            <Image src={logoImage} alt="Indido Apparel" height={120} style="height: 45px; width: auto; object-fit: contain;" />
+        </a>
+        <p class="footer-desc">
+            A modern apparel sourcing, product development, and manufacturing coordination partner for premium retail labels and buyers.
+        </p>
+        <div class="footer-socials">
+            <a href="#" aria-label="LinkedIn" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- 5 column footer details -->
+    <div class="footer-top">
+        <!-- Links column -->
+        <div class="footer-links">
+            <strong>Navigate</strong>
+            <nav aria-label="Footer navigation">
+                <a href="/">Home</a>
+                <a href="/#company">About</a>
+                <a href="/#capabilities">Services</a>
+                <a href="/#sustainability">Sustainability</a>
+                <a href="/#latest-collection">Collections</a>
+                <a href="/#customers">Customers</a>
+                <a href="/#contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- India Office column -->
+        <div class="footer-contact">
+            <strong>India Office</strong>
+            <p>
+            Indido Apparel Pvt. Ltd.,<br />
+                A 94, DDA Shed,<br />
+                Okhla Industrial Area Phase II,<br />
+                New Delhi - 110020
+            </p>
+        </div>
+
+<!-- Singapore Office column -->
+        <div class="footer-contact">
+            <strong>Singapore Office</strong>
+            <p>
+                Amragroup Pte. Ltd.<br />
+                10 Anson Road #22-15,<br />
+                International Plaza,<br />
+                Singapore (079903)
+            </p>
+        </div>
+
+
+        <!-- Jakarta Office column -->
+        <div class="footer-contact">
+            <strong>Indonesia Office</strong>
+            <p>
+            PT Amra Apparel Industries,<br />
+            The Mansion Bougenville,<br />
+            Tower Fontana, BF-26-D1,<br />
+            Jl trembesi , Block D 4,<br />
+            Kemayoran, Jakarta Pusat – 14410<br />
+            </p>
+        </div>
+
+        
+        <!-- Inquiries column -->
+        <div class="footer-contact">
+            <strong>Inquiries</strong>
+            <p>
+                Email: <a href="mailto:Info.in@indidoapparel.com">Info.in@indidoapparel.com</a><br />
+                Office landline: <a href="tel:01145502493">011-45502493</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom copyright bar -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <p class="copyright">&copy; 2026 Indido Apparel. All rights reserved.</p>
+            <span class="divider">|</span>
+            <div class="footer-legal-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <span class="divider">|</span>
+                <a href="/terms-of-service">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Scoped Premium Footer Layout Styles */
+    .site-footer {
+        background-color: var(--cotton);
+        border-top: 1px solid var(--line);
+        padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 4rem) clamp(2.5rem, 5vw, 4rem);
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3.5rem;
+    }
+    :global(.collection-nav-wrapper) + .site-footer {
+        margin-top: 0;
+        border-top: none; /* Seamless transition as both use var(--cotton) */
+    }
+    .footer-brand-top {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: center;
+        text-align: center;
+        max-width: 35rem;
+        margin: 0 auto;
+    }
+    .footer-brand-top .brand-mark {
+        justify-content: center;
+        width: 100%;
+    }
+    .footer-top {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: clamp(1.5rem, 2.5vw, 2.5rem);
+        border-top: 1px solid var(--line);
+        padding-top: 3.5rem;
+     }
+    .footer-desc {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.65;
+        margin: 0;
+    }
+    .footer-socials {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        width: 100%;
+    }
+    .social-link {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+        background: transparent;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .social-link:hover {
+        background: var(--ink);
+        color: var(--cotton) !important;
+        border-color: var(--ink);
+        transform: translateY(-3px);
+    }
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-links nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem 2rem;
+        align-items: start;
+    }
+    .footer-links nav a {
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .footer-links nav a:hover {
+        color: var(--thread) !important;
+        transform: translateX(4px);
+    }
+    .footer-links nav a:last-child {
+        grid-column: span 2;
+        text-align: center;
+    }
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-contact p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+    .footer-contact a {
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    .footer-contact a:hover {
+        color: var(--thread);
+    }
+    .footer-top strong {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--thread);
+        margin-bottom: 1.5rem;
+    }
+
+
+    /* Bottom copyright bar */
+    .footer-bottom {
+        border-top: 1px solid var(--line);
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    .footer-bottom-left {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    .footer-bottom p {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin: 0;
+    }
+    .footer-tagline {
+        font-style: italic;
+        color: var(--thread) !important;
+        font-size: 0.82rem !important;
+    }
+    .footer-legal-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .footer-legal-links a {
+        font-size: 0.8rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .footer-legal-links a:hover {
+        color: var(--thread);
+    }
+    .divider {
+        color: var(--line);
+        font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+        .footer-top {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem 2rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .footer-top {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .footer-top {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .footer-bottom {
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .footer-bottom-left {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+</style>

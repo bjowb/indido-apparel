@@ -1,0 +1,141 @@
+---
+/**
+ * HomeCustomers.astro - Homepage Customers Overview
+ * Highlights partnership levels, trust, scale capabilities, and link to map.
+ */
+import { Image } from 'astro:assets';
+import customersBannerImage from '../assets/shop/customers_banner.png';
+---
+
+<section class="customers-section split-section reverse" id="customers" style="padding: clamp(5rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem);">
+    <!-- Left: Content Column -->
+    <div class="cust-content-col reveal-on-scroll from-left">
+        <!-- Title -->
+        <div class="cust-section-title">
+            <span class="eyebrow">Our Partnerships</span>
+            <h2>Our <em>Customers</em></h2>
+        </div>
+        
+        <p class="cust-lead-text">
+            We build lasting relationships on trust, consistency, and results. That is why our clients treat us as their long-term global sourcing team.
+        </p>
+        <p class="cust-body-text">
+            From low-MOQ sampling programs for emerging fashion labels to large-scale bulk support for established retailers, we provide flexible production pathways to scale your brand.
+        </p>
+
+        <!-- Single Read More Button for Customers -->
+        <div class="cust-cta-row">
+            <a class="explore-btn" href="/customers">
+                Read More About Customers
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-arrow-right" aria-hidden="true" style="margin-left: 0.5rem;">
+                    <line x1="5" x2="19" y1="12" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Right: Image Cover -->
+    <div class="cust-image-col reveal-on-scroll from-right">
+        <div class="cust-image-container">
+            <Image src={customersBannerImage} alt="Our Customers and Sourcing Meeting" class="cust-cover-img" width={600} />
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Customers Restructured Section Styles */
+    .cust-image-col {
+        width: 100%;
+        height: 100%;
+        min-height: 480px;
+    }
+    .cust-image-container {
+        width: 100%;
+        height: 100%;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(23, 32, 28, 0.05);
+        display: flex;
+    }
+    .cust-cover-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .cust-content-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
+    .cust-section-title {
+        text-align: center;
+        width: 100%;
+    }
+    .cust-section-title .eyebrow {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--thread);
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+    .cust-section-title h2 {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem) !important;
+        color: var(--ink);
+        line-height: 1.15;
+        margin: 0;
+        text-align: center !important;
+    }
+    .cust-section-title h2 em {
+        font-style: italic;
+        color: var(--thread);
+    }
+    .cust-section-title h2::after {
+        content: '';
+        display: block;
+        width: 3.5rem;
+        height: 2px;
+        background: var(--thread);
+        margin: 1.2rem auto 0 auto;
+    }
+    .cust-lead-text {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--ink);
+        font-weight: 600;
+        margin: 0;
+        text-align: center !important;
+    }
+    .cust-body-text {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        margin: 0;
+        text-align: center !important;
+    }
+    .cust-cta-row {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    @media (max-width: 900px) {
+        .customers-section {
+            grid-template-columns: 1fr !important;
+        }
+        .cust-image-col {
+            min-height: 300px;
+        }
+    }
+</style>

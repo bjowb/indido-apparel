@@ -1,0 +1,184 @@
+---
+/**
+ * ProcessSlider.astro - Interactive Production Process Slider
+ * Showcases stages 01 to 04 with image and text transitions.
+ * Supports touch swiping and auto-rotation loop.
+ */
+import { getImage } from 'astro:assets';
+import processImage1 from '../assets/shop/stage1_partnership.png';
+import processImage2 from '../assets/shop/stage2_standards.png';
+import processImage3 from '../assets/shop/stage3_categories.png';
+import processImage4 from '../assets/shop/stage4_coordination.png';
+
+const optProcessImage1 = await getImage({ src: processImage1, width: 800, format: 'webp' });
+const optProcessImage2 = await getImage({ src: processImage2, width: 800, format: 'webp' });
+const optProcessImage3 = await getImage({ src: processImage3, width: 800, format: 'webp' });
+const optProcessImage4 = await getImage({ src: processImage4, width: 800, format: 'webp' });
+---
+
+<section class="process-section" id="process" style="margin-top: 5rem; margin-bottom: 5rem;">
+    <!-- Header for the process section centered at top -->
+    <div class="section-heading reveal-on-scroll scale-up">
+        <p class="eyebrow split-text-scroll">Production Partner</p>
+        <h2 class="split-text-scroll">Trusted manufacturing networks deliver quality, consistency, and <em>scale</em>.</h2>
+        <p class="split-text-scroll" style="margin-left: auto; margin-right: auto; max-width: 44rem;">We collaborate with a selected network of factories and production bases to match each garment category with the right capability, volume, and level of finish.</p>
+    </div>
+
+    <!-- Interactive Process Step Slider -->
+    <div class="process-slider-container reveal-on-scroll">
+        <!-- Stage numbers navigation -->
+        <div class="process-nav">
+            <button class="nav-num active" data-step="0">01</button>
+            <button class="nav-num" data-step="1">02</button>
+            <button class="nav-num" data-step="2">03</button>
+            <button class="nav-num" data-step="3">04</button>
+        </div>
+
+        <!-- Content display viewport -->
+        <div class="process-viewport">
+            <!-- Left side: image showcase -->
+            <div class="process-image-pane">
+                <div class="slide-image active" style={`background-image: linear-gradient(transparent, rgba(23,32,28,0.22)), url(${optProcessImage1.src})`} data-index="0"></div>
+                <div class="slide-image" style={`background-image: linear-gradient(transparent, rgba(23,32,28,0.22)), url(${optProcessImage2.src})`} data-index="1"></div>
+                <div class="slide-image" style={`background-image: linear-gradient(transparent, rgba(23,32,28,0.22)), url(${optProcessImage3.src})`} data-index="2"></div>
+                <div class="slide-image" style={`background-image: linear-gradient(transparent, rgba(23,32,28,0.22)), url(${optProcessImage4.src})`} data-index="3"></div>
+            </div>
+
+            <!-- Right side: copy detail -->
+            <div class="process-copy-pane">
+                <!-- Slide 1 -->
+                <div class="slide-text active" data-index="0">
+                    <span class="slide-sub">Stage 01</span>
+                    <h3>Trusted Manufacturing Partnerships</h3>
+                    <p>We work with a select network of production partners who are chosen for their technical capability, operational consistency, and commitment to refined craftsmanship. Each partner is carefully evaluated to ensure alignment with our standards for quality, compliance, and execution.</p>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide-text" data-index="1">
+                    <span class="slide-sub">Stage 02</span>
+                    <h3>Elevated Production Standards</h3>
+                    <p>Our supplier relationships are built around more than capacity alone. We collaborate with factories that demonstrate reliability, transparency, and a disciplined approach to production, allowing us to support collections with precision and confidence.</p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide-text" data-index="2">
+                    <span class="slide-sub">Stage 03</span>
+                    <h3>Tailored to Each Product Category</h3>
+                    <p>Every product requires the right manufacturing environment. Whether the requirement is woven, knit, fashion-driven, or export-focused, we match each order with production partners best suited to the category, volume, and desired level of finish.</p>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide-text" data-index="3">
+                    <span class="slide-sub">Stage 04</span>
+                    <h3>Seamless Coordination</h3>
+                    <p>From sampling and planning to quality control and shipment readiness, we work closely with our production partners to maintain momentum at every stage. This hands-on coordination helps ensure that each order is delivered with consistency, efficiency, and care.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const setupProcessSlider = () => {
+        const navButtons = document.querySelectorAll('.nav-num');
+        const images = document.querySelectorAll('.slide-image');
+        const texts = document.querySelectorAll('.slide-text');
+
+        if (navButtons.length === 0) return;
+
+        // Index state tracker and interval container
+        let currentIndex = 0;
+        let autoplayInterval: any;
+
+        /**
+         * Step Switcher
+         * Handles updating button highlight states, crossfading background images,
+         * and choreographing the text slide exit (left) and entrance (right) animations.
+         */
+        const goToStep = (index: number) => {
+            if (index === currentIndex) return; // Prevent duplicate transition triggers
+
+            // 1. Highlight the active circular navigation button
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            navButtons[index].classList.add('active');
+
+            // 2. Crossfade: active layer fades out, next layer fades in
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+
+            // 3. slide-text exit transition (slid out to the left)
+            const activeText = document.querySelector('.slide-text.active');
+            if (activeText) {
+                activeText.classList.remove('active');
+                activeText.classList.add('exit');
+                
+                const prevText = activeText;
+                // Clean up exit class after CSS slide completes
+                setTimeout(() => {
+                    prevText.classList.remove('exit');
+                }, 500);
+            }
+
+            // 4. Slide in the new text content from the right
+            texts[index].classList.remove('exit');
+            texts[index].classList.add('active');
+
+            currentIndex = index;
+        };
+
+        /**
+         * Autoplay Manager
+         * Set to run automatically every 2 seconds. Loops back to
+         * Stage 1 when the final step (Stage 4) completes.
+         */
+        const startAutoplay = () => {
+            clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(() => {
+                const nextIndex = (currentIndex + 1) % navButtons.length;
+                goToStep(nextIndex);
+            }, 2000); // 2-second rotation threshold
+        };
+
+        // Attach click handlers to navigation dots
+        navButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                goToStep(index);
+                startAutoplay(); // Reset the 2-second timer immediately on click
+            });
+        });
+
+        // Touch events for mobile swipe gesture support on the process section
+        const viewport = document.querySelector('.process-viewport');
+        if (viewport) {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            viewport.addEventListener('touchstart', (e) => {
+                touchStartX = (e as TouchEvent).changedTouches[0].screenX;
+            }, { passive: true });
+            
+            viewport.addEventListener('touchend', (e) => {
+                touchEndX = (e as TouchEvent).changedTouches[0].screenX;
+                const swipeDistance = touchEndX - touchStartX;
+                const threshold = 50; // min sweep pixels
+                
+                if (Math.abs(swipeDistance) > threshold) {
+                    if (swipeDistance < 0) {
+                        // Swiped left -> next
+                        const nextIndex = (currentIndex + 1) % navButtons.length;
+                        goToStep(nextIndex);
+                        startAutoplay();
+                    } else {
+                        // Swiped right -> prev
+                        const prevIndex = (currentIndex - 1 + navButtons.length) % navButtons.length;
+                        goToStep(prevIndex);
+                        startAutoplay();
+                    }
+                }
+            }, { passive: true });
+        }
+
+        startAutoplay();
+    };
+
+    // Run setup
+    setupProcessSlider();
+    document.addEventListener('astro:after-swap', setupProcessSlider);
+</script>

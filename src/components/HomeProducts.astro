@@ -1,0 +1,401 @@
+---
+/**
+ * HomeProducts.astro - Homepage Catalog & Programs Grid
+ * Displays six product catalog options (Men, Women, Kid, Denim, Knits/Jersey, Workwear).
+ * Clickable cards lead to program details. Uses clean responsive card styles.
+ */
+import { Image } from 'astro:assets';
+import menImage from '../assets/Website Product Images/Men/Formal & Tailored/IMG_3647.jpg';
+import womenImage from '../assets/Website Product Images/Women/Outwear And layering/IMG_3646.JPG';
+import childImage from '../assets/Website Product Images/Kids/Casual Tops/IMG_3663.jpg';
+import denimImage from '../assets/Website Product Images/Denim/IMG_3671.jpg';
+import jerseyImage from '../assets/Website Product Images/Jerseys/3204CFA7-F024-4345-8723-C24B7EFF8B26 Background Removed.JPEG';
+import workwearImage from '../assets/Website Product Images/Workwear/IMG_3569.jpg';
+---
+
+<section class="latest-collection-section" id="latest-collection">
+    <div class="section-heading" style="margin: 0 auto 2.5rem; text-align: center;">
+        <h2 class="reveal-on-scroll split-text-scroll">Products</h2>
+        <p class="reveal-on-scroll split-text-scroll" style="margin-left: auto; margin-right: auto; max-width: 48rem;">Explore our customized clothing production programs. Click any card to view our capabilities and fabric options.</p>
+    </div>
+    
+    <div class="collection-cards-grid">
+        <a href="/collections/men" class="collection-card-link reveal-on-scroll from-left" style="--delay: 0ms;">
+            <article class="latest-card">
+                <div class="card-image-wrapper">
+                    <Image src={menImage} alt="Men's Collection" width={500} />
+                </div>
+                <div class="card-content">
+                    <div class="card-text-header">
+                        <span class="card-category">Collection 01</span>
+                        <h3>Men</h3>
+                        <p>Premium structured cotton shirts, lightweight linen kurtas, and modern tailored menswear.</p>
+                    </div>
+                    <span class="explore-btn">
+                        Explore
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right" aria-hidden="true">
+                            <line x1="5" x2="19" y1="12" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </article>
+        </a>
+
+        <a href="/collections/women" class="collection-card-link reveal-on-scroll scale-up" style="--delay: 120ms;">
+            <article class="latest-card">
+                <div class="card-image-wrapper">
+                    <Image src={womenImage} alt="Women's Collection" width={500} />
+                </div>
+                <div class="card-content">
+                    <div class="card-text-header">
+                        <span class="card-category">Collection 02</span>
+                        <h3>Women</h3>
+                        <p>Elegant linen sets, organic cotton dresses, and contemporary tailored womenswear.</p>
+                    </div>
+                    <span class="explore-btn">
+                        Explore
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right" aria-hidden="true">
+                            <line x1="5" x2="19" y1="12" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </article>
+        </a>
+
+        <a href="/collections/child" class="collection-card-link reveal-on-scroll from-right" style="--delay: 240ms;">
+            <article class="latest-card">
+                <div class="card-image-wrapper">
+                    <Image src={childImage} alt="Children's Collection" width={500} />
+                </div>
+                <div class="card-content">
+                    <div class="card-text-header">
+                        <span class="card-category">Collection 03</span>
+                        <h3>Kid</h3>
+                        <p>Soft, breathable organic cotton and linen playwear sets for toddlers and kids.</p>
+                    </div>
+                    <span class="explore-btn">
+                        Explore
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right" aria-hidden="true">
+                            <line x1="5" x2="19" y1="12" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </article>
+        </a>
+
+        <a href="/collections/denim" class="collection-card-link reveal-on-scroll from-left" style="--delay: 0ms;">
+            <article class="latest-card">
+                <div class="card-image-wrapper">
+                    <Image src={denimImage} alt="Denim Collection" width={500} />
+                </div>
+                <div class="card-content">
+                    <div class="card-text-header">
+                        <span class="card-category">Collection 04</span>
+                        <h3>Denim</h3>
+                        <p>Custom denim programs featuring durable fits, authentic washes, and premium circular finishes.</p>
+                    </div>
+                    <span class="explore-btn">
+                        Explore
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right" aria-hidden="true">
+                            <line x1="5" x2="19" y1="12" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </article>
+        </a>
+
+        <a href="/collections/jersey" class="collection-card-link reveal-on-scroll scale-up" style="--delay: 120ms;">
+            <article class="latest-card">
+                <div class="card-image-wrapper">
+                    <Image src={jerseyImage} alt="Jersey Collection" width={500} />
+                </div>
+                <div class="card-content">
+                    <div class="card-text-header">
+                        <span class="card-category">Collection 05</span>
+                        <h3>Jersey</h3>
+                        <p>Soft, flexible knitwear ranging from everyday premium t-shirts and lounge sets to comfortable casuals.</p>
+                    </div>
+                    <span class="explore-btn">
+                        Explore
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right" aria-hidden="true">
+                            <line x1="5" x2="19" y1="12" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </article>
+        </a>
+
+        <a href="/collections/workwear" class="collection-card-link reveal-on-scroll from-right" style="--delay: 240ms;">
+            <article class="latest-card">
+                <div class="card-image-wrapper">
+                    <Image src={workwearImage} alt="Workwear Collection" width={500} />
+                </div>
+                <div class="card-content">
+                    <div class="card-text-header">
+                        <span class="card-category">Collection 06</span>
+                        <h3>Workwear</h3>
+                        <p>Durable, functional utility apparel and professional workwear built for performance and resilience.</p>
+                    </div>
+                    <span class="explore-btn">
+                        Explore
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-right" aria-hidden="true">
+                            <line x1="5" x2="19" y1="12" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </article>
+        </a>
+    </div>
+</section>
+
+<style>
+    .latest-collection-section {
+        padding: clamp(5rem, 10vw, 9rem) clamp(1rem, 4vw, 4rem);
+        border-bottom: 1px solid var(--line);
+        background: var(--cotton);
+        position: relative;
+    }
+    
+    /* Centered header content container styling */
+    .latest-collection-section .section-heading {
+        max-width: 52rem;
+        margin: 0 auto 4rem !important;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .latest-collection-section .section-heading h2 {
+        font-size: clamp(2.2rem, 5vw, 4.2rem);
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        margin: 0.5rem 0;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.75rem;
+    }
+    
+    .latest-collection-section .section-heading h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3.5rem;
+        height: 2px;
+        background: var(--thread); /* Subtle accent underline under the serif header */
+    }
+
+    .latest-collection-section .section-heading p {
+        color: var(--muted);
+        font-size: clamp(1rem, 1.25vw, 1.15rem);
+        line-height: 1.7;
+        max-width: 44rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Outer grid wrapper to center the cards list */
+    .collection-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Clean 3-column layout for 3 collections */
+        gap: 2.25rem; /* Clean, beautiful, well-balanced card gap */
+        max-width: 76rem;
+        margin: 0 auto;
+    }
+
+    .collection-card-link {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        height: 100%;
+    }
+
+    .latest-card {
+        border: 1px solid var(--line);
+        background: var(--cotton); /* Pure pristine white card background */
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    border-color 0.5s ease;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px; /* Smooth rounded corners for high-end aesthetic */
+        box-shadow: 0 12px 30px rgba(23, 32, 28, 0.03); /* Soft floating paper card shadow */
+    }
+
+    .latest-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 2rem 4.5rem rgba(23, 32, 28, 0.08);
+        border-color: var(--thread);
+    }
+
+    /* Image wrapper designed like an indented luxury catalog frame - NO cropping */
+    .card-image-wrapper {
+        position: relative;
+        aspect-ratio: 4 / 5; /* Elegant portrait aspect ratio for clothing styles */
+        width: calc(100% - 2.5rem); /* Explicit width constraint to prevent Safari flex item expansion */
+        height: auto;
+        overflow: hidden;
+        background: var(--paper); /* Ivory-white inner canvas container */
+        margin: 1.25rem 1.25rem 0 1.25rem; /* Indented frame spacing */
+        padding: 1.5rem 1.5rem 0.5rem; /* Frame margin around image */
+        display: block; /* Avoid WebKit flexbox aspect-ratio sizing bugs */
+        border-radius: 8px; /* Inner frame rounding */
+        border: 1px solid var(--line); /* Framing line */
+    }
+
+    .card-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Cover-fill catalog card images cleanly */
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 4px;
+    }
+
+    .latest-card:hover .card-image-wrapper img {
+        transform: scale(1.03); /* Subtle zoom inside framework on card hover */
+    }
+
+    /* Upgraded Card text and buttons */
+    .card-content {
+        padding: 1.75rem 1.5rem 2.25rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .card-text-header {
+        margin-bottom: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-category {
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--thread);
+        font-weight: 800;
+        margin-bottom: 0.6rem;
+        display: block;
+    }
+
+    .card-content h3 {
+        font-family: 'Helvetica Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 1.55rem;
+        margin-bottom: 0.6rem;
+        font-weight: 400;
+        margin-top: 0;
+        color: var(--ink);
+    }
+
+    .card-content p {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-top: 0;
+        margin-bottom: 0;
+        max-width: 19rem;
+    }
+
+    /* Outlined button changing to outlined-solid transitions */
+    .explore-btn {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--cotton);
+        background: var(--ink);
+        padding: 0.85rem 2rem;
+        border: 1px solid var(--ink);
+        letter-spacing: 0.1em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                    color 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 2px;
+    }
+
+    /* SVG arrow slides to right on hover */
+    .explore-btn svg {
+        transition: transform 0.3s ease;
+    }
+
+    .latest-card:hover .explore-btn {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--ink);
+    }
+
+    .latest-card:hover .explore-btn svg {
+        transform: translateX(4px);
+    }
+
+    /* Dark Mode specific variables for the card button */
+    [data-theme="dark"] .explore-btn {
+        background: var(--ink);
+        color: var(--cotton);
+        border-color: var(--ink);
+    }
+
+    [data-theme="dark"] .latest-card:hover .explore-btn {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--ink);
+    }
+
+    /* Responsive styling */
+    @media (max-width: 992px) {
+        .collection-cards-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .collection-cards-grid {
+            grid-template-columns: 1fr; /* Stack cards vertically on mobile */
+            gap: 2rem;
+        }
+        .card-image-wrapper {
+            width: calc(100% - 2rem);
+            margin: 1rem 1rem 0 1rem;
+            padding: 1rem 1rem 0.5rem;
+        }
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+        }
+        .latest-collection-section {
+            padding: 4rem 1rem;
+        }
+    }
+</style>

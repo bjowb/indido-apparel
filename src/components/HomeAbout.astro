@@ -1,0 +1,193 @@
+---
+/**
+ * HomeAbout.astro - Homepage About Us Section
+ * Highlights brand purpose, core capabilities, checklist, and credentials card.
+ * Integrates responsive DOM repositioning layout-swap script for narrow screens.
+ */
+import { Image } from 'astro:assets';
+import aboutUs1Image from '../assets/about_us/about_us1.png';
+---
+
+<section class="intro-section" id="company" style="padding: clamp(5rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem);">
+    <div class="about-interactive-grid split-section reverse">
+        
+        <!-- Left Pane: Content & Details -->
+        <div class="about-right-pane reveal-on-scroll from-left">
+            <div class="about-header-group">
+                <span class="eyebrow">Who we are</span>
+                <h2 class="about-main-heading">About<em> Us</em></h2>
+            </div>
+            
+            <!-- Quote text box -->
+            <div class="about-quote-box">
+                <p>"Your premier partner in apparel sourcing. Transforming design concepts into market-ready retail products. Let us guide your collections with global expertise."</p>
+            </div>
+            
+            <!-- Detailed descriptions -->
+            <p class="about-text-desc">
+                We deeply believe that building and scaling a fashion brand should be an exciting and rewarding journey rather than a logistical challenge. We manage every stage of the product lifecycle—from initial concept and raw materials sourcing to manufacturing management, quality audits, and final shipping logistics.
+            </p>
+            
+            <!-- Checklist -->
+            <ul class="about-checklist">
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Direct Factory Sourcing &amp; Auditing</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>100% Quality Inspections &amp; Compliance</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>End-to-End Logistical Execution</span>
+                </li>
+            </ul>
+            
+            <!-- CTA outline button -->
+            <div class="about-cta-row">
+                <a class="about-discover-btn" href="/about-us">
+                    LEARN  MORE
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-arrow-right" aria-hidden="true" style="margin-left: 0.5rem;">
+                        <line x1="5" x2="19" y1="12" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Pane: Images & Stats -->
+        <div class="about-left-pane reveal-on-scroll from-right">
+            <div class="about-main-image-container">
+                <Image src={aboutUs1Image} alt="About Indido Apparel" class="about-main-img" width={600} />
+                
+                <!-- Overlapping Experience Box -->
+                <div class="about-experience-box">
+                    <span class="exp-text">Apparel <br>Buying House</span>
+                </div>
+                
+                <!-- Overlapping Clients Card -->
+                <div class="about-clients-card">
+                    <span class="card-label">5+ Countries</span>
+                    <div class="avatar-group">
+                        <div class="avatar-img" style="background: #e5989b;">CH</div>
+                        <div class="avatar-img" style="background: #b5e2fa;">BD</div>
+                        <div class="avatar-img" style="background: #f7b2bd;">ID</div>
+                        <div class="avatar-img" style="background: #c5a059;">MY</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<style>
+    /* About Us Restructured Styles (Centered Symmetrical Layout) */
+    .about-right-pane {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .about-header-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .about-main-heading {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem) !important;
+        line-height: 1.15;
+        margin: 0;
+        text-align: center !important;
+    }
+    .about-main-heading em {
+        font-style: italic;
+        color: var(--thread);
+    }
+    .about-main-heading::after {
+        content: '';
+        display: block;
+        width: 3.5rem;
+        height: 2px;
+        background: var(--thread);
+        margin: 1.2rem auto 0 auto;
+    }
+    .about-eyebrow {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--thread);
+        margin-bottom: 0.8rem;
+        text-align: center;
+    }
+    .about-quote-box p {
+        text-align: center !important;
+    }
+    .about-text-desc {
+        text-align: center !important;
+    }
+    .about-checklist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .about-checklist li {
+        justify-content: center;
+    }
+    .about-cta-row {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .intro-section {
+        position: relative;
+        overflow: hidden;
+        padding-top: clamp(6rem, 12vw, 10rem);
+        padding-bottom: clamp(6rem, 12vw, 10rem);
+    }
+</style>
+
+<script>
+    /**
+     * Dynamic About-Us Image Placement layout-swap
+     * Relocates the main showcase image pane on mobile viewports directly between the
+     * highlight quote box and the description paragraph, ensuring balanced typography flow.
+     */
+    const setupMobileAboutLayout = () => {
+        const grid = document.querySelector('.about-interactive-grid');
+        const leftPane = document.querySelector('.about-left-pane');
+        const rightPane = document.querySelector('.about-right-pane');
+        const quoteBox = document.querySelector('.about-quote-box');
+
+        if (!grid || !leftPane || !rightPane || !quoteBox) return;
+
+        const isMobile = window.innerWidth <= 900;
+        if (isMobile) {
+            // Place leftPane directly below the quote box on mobile
+            if (quoteBox.nextElementSibling !== leftPane) {
+                quoteBox.insertAdjacentElement('afterend', leftPane);
+            }
+        } else {
+            // Restore it back as the first child of the grid container on desktop
+            if (grid.firstElementChild !== leftPane) {
+                grid.insertBefore(leftPane, grid.firstElementChild);
+            }
+        }
+    };
+
+    setupMobileAboutLayout();
+
+    window.addEventListener('resize', setupMobileAboutLayout, { passive: true });
+
+    document.addEventListener('astro:after-swap', () => {
+        setupMobileAboutLayout();
+    });
+</script>

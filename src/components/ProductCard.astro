@@ -1,0 +1,189 @@
+---
+/**
+ * ProductCard.astro - Reusable Lookbook Product Card Component
+ * Renders a single garment catalog item card with an optimized image.
+ * Optionally displays discount badge, garment title, pricing, and hover size drawer.
+ */
+import { Image } from 'astro:assets';
+
+interface Props {
+  name?: string;
+  image: any;
+  originalPrice?: string;
+  salePrice?: string;
+  discount?: string;
+  sizes?: string[];
+  delay?: number;
+}
+
+const {
+  name,
+  image,
+  originalPrice,
+  salePrice,
+  discount,
+  sizes,
+  delay = 0
+} = Astro.props;
+
+const hasInfo = !!(name || originalPrice || salePrice || sizes);
+---
+
+<div class="product-card reveal-on-scroll" style={`--delay: ${delay}ms;`}>
+    <div class="product-image-container">
+        <Image src={image} alt={name || "Collection item"} class="product-image" width={600} height={800} />
+    </div>
+
+    {hasInfo && (
+        <div class="card-info">
+            <!-- Product Title -->
+            {name && <h3 class="product-title">{name}</h3>}
+
+            <!-- Product Price -->
+            {(originalPrice || salePrice) && (
+                <div class="product-price">
+                    {originalPrice && <span class="original-price">Rs. {originalPrice}</span>}
+                    {salePrice && <span class="sale-price">Rs. {salePrice}</span>}
+                </div>
+            )}
+
+            <!-- Architectural hover sizes drawer -->
+            {sizes && sizes.length > 0 && (
+                <div class="architect-drawer">
+                    <div class="sizes-row">
+                        {sizes.map(size => (
+                            <span class="size-item">{size}</span>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    )}
+</div>
+
+<style>
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--cotton);
+        border: 1px solid rgba(23, 32, 28, 0.05);
+        padding: 1rem;
+        border-radius: 12px;
+        transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        box-shadow: 0 4px 10px rgba(23, 32, 28, 0.02), 0 1px 3px rgba(23, 32, 28, 0.01);
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--thread, #5a976c);
+        box-shadow: 0 25px 50px -12px rgba(23, 32, 28, 0.06), 0 10px 20px -5px rgba(23, 32, 28, 0.02);
+    }
+    .product-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        background: #f7f7f7;
+        border-radius: 8px;
+    }
+    .discount-badge {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        background: var(--thread, #5a976c);
+        color: #ffffff;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        border-radius: 4px;
+        z-index: 5;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(23, 32, 28, 0.1);
+    }
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover .product-image {
+        transform: scale(1.04);
+    }
+
+    /* Card Info & Drawer */
+    .card-info {
+        padding-top: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        background: transparent;
+        text-align: center;
+    }
+    .product-title {
+        font-family: var(--body-font), sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink, #17201c);
+        margin: 0 0 0.4rem 0;
+    }
+    .product-price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+    .original-price {
+        text-decoration: line-through;
+        color: var(--muted, #657069);
+        margin-right: 0.6rem;
+        opacity: 0.75;
+    }
+    .sale-price {
+        font-weight: 700;
+        color: var(--thread, #5a976c);
+        margin-right: 0.6rem;
+    }
+
+    /* Architect Drawer */
+    .architect-drawer {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-card:hover .architect-drawer {
+        max-height: 3rem;
+        opacity: 1;
+    }
+    .sizes-row {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 0.4rem;
+        border-top: 1px solid rgba(23, 32, 28, 0.06);
+        padding-top: 0.6rem;
+        width: 100%;
+        justify-content: center;
+    }
+    .size-item {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--muted, #64748b);
+        letter-spacing: 0.05em;
+    }
+
+    /* Responsiveness mobile safety touch state overlay overrides */
+    @media (max-width: 768px) {
+        .architect-drawer {
+            max-height: 3rem;
+            opacity: 1;
+        }
+    }
+</style>

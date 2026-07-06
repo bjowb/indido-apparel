@@ -1,0 +1,98 @@
+---
+/**
+ * HomeHero.astro - Homepage Hero Section
+ * Renders the top parallax header screen, featuring atmospheric light particles,
+ * background images, brand emblem badges, and scrolling CTA anchors.
+ */
+import { getImage } from 'astro:assets';
+import heroCustomImage from '../assets/hero_banner1.png';
+
+const optHeroCustom = await getImage({ src: heroCustomImage, width: 1600, format: 'webp' });
+---
+
+<section class="hero-section" id="top">
+    <!-- Floating Ambient Orbs (Pristine light particles) -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <!-- Image-->
+    <div class="hero-image" id="hero-background" aria-label="Apparel production detail">
+        <div class="hero-slide-layer active" style={`background-image: url(${optHeroCustom.src})`}></div>
+    </div>
+
+    <!-- Elegant Centered Top Brand Banner -->
+    <div class="hero-story-top-header">
+        <a href="/about-us" class="hero-brand-badge">IND-I-DO</a>
+    </div>
+
+    <!-- Content-->
+    <div class="hero-container-split">
+        <!-- Left Side: Title -->
+        <div class="hero-title-pane">
+            <h1 class="hero-title-main">
+                Where Your Vision Meets <br>
+                <span class="shimmer-text"><em>Global Expertise.</em></span>
+            </h1>
+        </div>
+        <!-- Right Side: Paragraph & CTA -->
+        <div class="hero-cta-pane">
+            <p class="hero-desc-main">
+                Indido Apparel is a premier fashion sourcing and manufacturing partner, translating design concepts into high-quality bulk garments.
+            </p>
+            <a class="hero-outline-btn" href="#company">
+                LEARN MORE
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-arrow-right" aria-hidden="true" style="margin-left: 0.5rem;">
+                    <line x1="5" x2="19" y1="12" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-image {
+        transition: opacity 0.6s ease-in-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+</style>
+
+<script>
+    /**
+     * Interactive Mouse Parallax
+     * Calculates mouse coordinates relative to the Hero container's dimensions.
+     * Moves the background slideshow subtly in the opposite direction (-12px to +12px)
+     * of the cursor, creating a deep, premium perspective depth on desktop screens.
+     */
+    const setupHeroParallax = () => {
+        const heroSection = document.getElementById('top');
+        const heroImage = document.getElementById('hero-background');
+        if (!heroSection || !heroImage) return;
+
+        heroSection.addEventListener('mousemove', (e: MouseEvent) => {
+            const width = heroSection.offsetWidth;
+            const height = heroSection.offsetHeight;
+            const rect = heroSection.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            // Calculate a subtle opposite-direction offset (-12px to +12px)
+            const moveX = ((mouseX / width) - 0.5) * -24;
+            const moveY = ((mouseY / height) - 0.5) * -24;
+            
+            heroImage.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.015)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            heroImage.style.transform = 'translate(0px, 0px) scale(1)';
+        });
+    };
+
+    setupHeroParallax();
+
+    document.addEventListener('astro:after-swap', () => {
+        setupHeroParallax();
+    });
+</script>
