@@ -1,5 +1,6 @@
 # build output
 dist/
+dist.zip
 # generated types
 .astro/
 
@@ -22,3 +23,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# temporary and scratch files
+scratch/
+resume.tex
+u.png
+*.mp4

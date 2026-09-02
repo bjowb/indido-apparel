@@ -57,7 +57,7 @@ This file summarizes the complete context, design adjustments, optimizations, an
 * `src/layouts/Layout.astro` &rarr; Central navbar header, transparent logo, theme toggles, and scroll animators.
 * `src/styles/global.css` &rarr; Global theme variables (light/dark schemes), responsive classes, and transitions.
 * `src/pages/index.astro` &rarr; Landing page with hero parallax and process workflow slider.
-* `src/pages/about.astro` &rarr; About page with behind-the-scenes video reels.
+* `src/pages/about-us.astro` &rarr; About page showcasing brand narrative and showcase image (`about_us1.png`).
 * `src/pages/collections/` &rarr; Subdirectories containing specific product catalog pages.
 * `src/assets/` &rarr; Hand-optimized WebP asset files, logos, and factory videos.
 * `dist/` &rarr; Compiled production bundle folder (rebuilt via `npx astro build`).

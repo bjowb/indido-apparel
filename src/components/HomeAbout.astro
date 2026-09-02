@@ -4,8 +4,6 @@
  * Highlights brand purpose, core capabilities, checklist, and credentials card.
  * Integrates responsive DOM repositioning layout-swap script for narrow screens.
  */
-import { Image } from 'astro:assets';
-import aboutUs1Image from '../assets/about_us/about_us1.png';
 ---
 
 <section class="intro-section" id="company" style="padding: clamp(5rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem);">
@@ -58,26 +56,17 @@ import aboutUs1Image from '../assets/about_us/about_us1.png';
             </div>
         </div>
 
-        <!-- Right Pane: Images & Stats -->
+        <!-- Right Pane: Interactive Video Preview -->
         <div class="about-left-pane reveal-on-scroll from-right">
             <div class="about-main-image-container">
-                <Image src={aboutUs1Image} alt="About Indido Apparel" class="about-main-img" width={600} />
-                
-                <!-- Overlapping Experience Box -->
-                <div class="about-experience-box">
-                    <span class="exp-text">Apparel <br>Buying House</span>
-                </div>
-                
-                <!-- Overlapping Clients Card -->
-                <div class="about-clients-card">
-                    <span class="card-label">5+ Countries</span>
-                    <div class="avatar-group">
-                        <div class="avatar-img" style="background: #e5989b;">CH</div>
-                        <div class="avatar-img" style="background: #b5e2fa;">BD</div>
-                        <div class="avatar-img" style="background: #f7b2bd;">ID</div>
-                        <div class="avatar-img" style="background: #c5a059;">MY</div>
-                    </div>
-                </div>
+                <a href="https://vimeo.com/1210051471?share=copy&fl=sv&fe=ci" target="_blank" rel="noopener noreferrer" class="about-video-wrapper" aria-label="Watch Indido Apparel video on Vimeo">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1210051471?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1" 
+                        class="about-main-video" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        title="Indido Apparel Video Preview">
+                    </iframe>
+                </a>
             </div>
         </div>
         
@@ -85,6 +74,31 @@ import aboutUs1Image from '../assets/about_us/about_us1.png';
 </section>
 
 <style>
+    /* Interactive Vimeo Video Preview Styling */
+    .about-video-wrapper {
+        display: block;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1.5 / 1;
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(23, 32, 28, 0.12);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-video-wrapper:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(23, 32, 28, 0.18);
+    }
+    .about-main-video {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        border: none;
+        object-fit: cover;
+        pointer-events: none;
+    }
     /* About Us Restructured Styles (Centered Symmetrical Layout) */
     .about-right-pane {
         display: flex;

@@ -37,8 +37,12 @@ import logo36 from '../assets/logo/logo36.png';
 import logo37 from '../assets/logo/logo37.png';
 import logo101 from '../assets/logo/logo101.webp';
 import logo201 from '../assets/logo/logo201.svg';
+import bonprixLogo from '../assets/logo/bonprix.png';
+import venusLogo from '../assets/logo/venus.png';
 
 const clientLogos = [
+    { src: venusLogo, alt: "VENUS Logo" },
+    { src: bonprixLogo, alt: "bonprix Logo" },
     { src: logo21Avif, alt: "Customer Logo 21" },
     { src: logo2, alt: "Customer Logo 2" },
     { src: logo3, alt: "Customer Logo 3" },
@@ -548,7 +552,7 @@ const clientLogos = [
         display: flex;
         width: max-content;
         gap: 2rem;
-        animation: logo-infinite-scroll 30s linear infinite;
+        animation: logo-infinite-scroll 55s linear infinite;
     }
     .logo-slider-track:hover {
         animation-play-state: paused;
